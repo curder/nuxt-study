@@ -29,17 +29,17 @@ export default defineConfig({
             {icon: 'github', link: 'https://github.com/curder/nuxt-study'}
         ],
         nav: [
-            // 
+            {text: "基础入门", link: "/getting-started/installation", activeMatch: '/getting-started/'},
         ],
         sidebar: {
-            "/getting-started": sidebarGettingStarted(),
+            "/getting-started":  [
+                {
+                    text: "",
+                    items: [
+                        {text: "Nuxt 安装", link: "/getting-started/installation"},
+                    ]
+                },
+            ],
         }
     }
 });
-
-function sidebarGettingStarted()
-{
-    return [
-        //
-    ];
-}
