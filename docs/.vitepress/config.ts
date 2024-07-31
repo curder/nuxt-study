@@ -6,6 +6,7 @@ export default defineConfig({
     title: "Nuxt 学习",
     description: "Nuxt 学习记录",
     lastUpdated: true,
+    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
     themeConfig: {
         logo: "",
         siteTitle: "Nuxt 学习",
