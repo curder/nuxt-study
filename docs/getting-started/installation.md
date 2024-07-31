@@ -13,23 +13,9 @@
 
 打开命令行，导航到你希望创建项目的目录，然后运行以下命令：
 
-::: code-group
 ```bash [npm]
 npx nuxi@latest init my-nuxt3-app
 ```
-
-```bash [yarn]
-yarn dlx nuxi@latest init my-nuxt3-app
-```
-
-```bash [pnpm]
-pnpm dlx nuxi@latest init my-nuxt3-app
-```
-
-```bash [bun]
-bun x nuxi@latest init <project-name>
-```
-:::
 
 ::: tip 温馨提示
 处理使用默认的启动器，也可以打开 [nuxt.new](https://nuxt.new) 并按照说明安装其他启动器或主题。
@@ -43,23 +29,12 @@ cd my-nuxt3-app
 
 ### **启动开发服务器**
 
-::: code-group
 ```bash [npm]
+npm run dev
+
+# 或者使用下面的命令启动开发服务器的同时在浏览器中打开项目
 npm run dev -- -o
 ```
-
-```bash [yarn]
-yarn dev --open
-```
-
-```bash [pnpm]
-pnpm dev -o
-```
-
-```bash [bun]
-bun run dev -o
-```
-:::
 
 这将启动一个本地开发服务器，默认情况下在 `http://localhost:3000` 运行。
 
