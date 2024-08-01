@@ -37,6 +37,7 @@ export default defineConfig({
                     text: "",
                     items: [
                         {text: "Nuxt 安装", link: "/getting-started/installation"},
+                        {text: "创建页面", link: "/getting-started/creating-pages"},
                     ]
                 },
             ],
