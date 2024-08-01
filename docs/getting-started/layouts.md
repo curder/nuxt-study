@@ -97,7 +97,7 @@ my-nuxt3-app/
       </nav>
     </header>
     <main>
-      <layout /> // [!code ++]
+      <slot /> // [!code ++]
     </main>
     <footer>
       <p>&copy; 2024 My Nuxt 3 App - Alternate</p>
