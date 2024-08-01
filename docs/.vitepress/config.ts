@@ -40,6 +40,7 @@ export default defineConfig({
                         {text: "创建页面", link: "/getting-started/creating-pages"},
                         {text: "链接 NuxtLink", link: "/getting-started/components/link"},
                         {text: "站点布局", link: "/getting-started/layouts"},
+                        {text: "组件 Components", link: "/getting-started/components"},
                     ]
                 },
             ],
