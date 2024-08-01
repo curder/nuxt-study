@@ -41,6 +41,7 @@ export default defineConfig({
                         {text: "链接 NuxtLink", link: "/getting-started/components/link"},
                         {text: "站点布局", link: "/getting-started/layouts"},
                         {text: "组件 Components", link: "/getting-started/components"},
+                        {text: "样式 Styles", link: "/getting-started/styles"},
                     ]
                 },
             ],
