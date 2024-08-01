@@ -61,7 +61,7 @@ my-nuxt3-app/
 npm run dev -- -o
 ```
 
-启动开发服务器后，可以在浏览器中访问 http://localhost:3000 和 http://localhost:3000/about 来查看创建的页面。
+启动开发服务器后，可以在浏览器中访问 `http://localhost:3000` 和 `http://localhost:3000/about` 来查看创建的页面。
 
 ## 其他示例
 
