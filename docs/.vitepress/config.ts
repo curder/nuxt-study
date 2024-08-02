@@ -44,6 +44,7 @@ export default defineConfig({
                         {text: "样式 Styles", link: "/getting-started/styles"},
                         {text: "获取数据", link: "/getting-started/fetching-data"},
                         {text: "管理头部数据", link: "/getting-started/managing-head-data"},
+                        {text: "Composable", link: "/getting-started/composable"},
                     ]
                 },
             ],
