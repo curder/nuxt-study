@@ -71,3 +71,26 @@ useHead({
 })
 </script>
 ```
+
+## 动态设置头部数据
+
+根据组件的状态动态设置头部数据。
+
+
+```vue
+<!-- pages/index.vue -->
+<template>
+  <div>
+    <h1>{{ title }}</h1>
+  </div>
+</template>
+<script setup>
+let title = ref('Home - My Nuxt 3 App');
+
+setTimeout(() => title.value = 'New home - My Nuxt 3 App', 2000)
+
+useHead({
+  title,
+})
+</script>
+```
