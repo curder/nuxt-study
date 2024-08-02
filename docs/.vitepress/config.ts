@@ -42,6 +42,7 @@ export default defineConfig({
                         {text: "站点布局", link: "/getting-started/layouts"},
                         {text: "组件 Components", link: "/getting-started/components"},
                         {text: "样式 Styles", link: "/getting-started/styles"},
+                        {text: "获取数据", link: "/getting-started/fetching-data"},
                     ]
                 },
             ],
