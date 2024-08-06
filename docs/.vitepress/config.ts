@@ -46,6 +46,7 @@ export default defineConfig({
                         {text: "管理头部数据", link: "/getting-started/managing-head-data"},
                         {text: "Composable", link: "/getting-started/composable"},
                         {text: "服务器 api", link: "/getting-started/server-api"},
+                        {text: "其他 Others", link: "/getting-started/others"},
                     ]
                 },
             ],
