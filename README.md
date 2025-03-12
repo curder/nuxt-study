@@ -1,6 +1,6 @@
 # Nuxt 学习
 
-[![Build Status](https://github.com/curder/nuxt-study/actions/workflows/build-docs.yml/badge.svg)](https://github.com/curder/nuxt-study/actions?query=build-docs%3Amaster)
+[![Build Status](https://github.com/curder/nuxt-study/actions/workflows/deploy.yml/badge.svg)](https://github.com/curder/nuxt-study/actions?query=deploy%3Amaster)
 
 1. 通过访问地址：[github.io](https://curder.github.io/nuxt-study/) 直接阅读。
 
