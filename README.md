@@ -13,7 +13,7 @@ GitHub 仓库地址：[curder/nuxt-study](https://www.github.com/curder/nuxt-stu
 
 下载源代码到本地并执行相关命令启动本地阅览。
 
-```bash
+```shell
 # 1. 下载源代码
 git clone git@github.com:curder/nuxt-study.git && cd nuxt-study
 
