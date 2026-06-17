@@ -6,8 +6,8 @@
 
 2. 本地下载
 
-   - `node v20.18.3`
-   - `vitepress 1.5.0`
+   - `node v24.14.1`
+   - `vitepress 2.0.0-alpha.17`
 
 GitHub 仓库地址：[curder/nuxt-study](https://www.github.com/curder/nuxt-study)
 
