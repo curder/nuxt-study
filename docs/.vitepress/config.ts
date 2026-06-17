@@ -6,20 +6,15 @@ export default defineConfig({
     title: "Nuxt 学习",
     description: "Nuxt 学习记录",
     lastUpdated: true,
-    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+    head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
     themeConfig: {
         logo: "",
         siteTitle: "Nuxt 学习",
-        outline: {
-            label: "章节导航",
-            level: 'deep',
-        },
-        lastUpdated: {
-            text: "最后更新时间",
-        },
-        docFooter: {
-            prev: '上一页',
-            next: '下一页'
+        outline: {label: "章节导航", level: 'deep',},
+        lastUpdated: {text: "最后更新时间",},
+        docFooter: {prev: '上一页', next: '下一页'},
+        search: {
+            provider: 'local',
         },
         editLink: {
             pattern: "https://github.com/curder/nuxt-study/edit/master/docs/:path",
@@ -32,7 +27,7 @@ export default defineConfig({
             {text: "基础入门", link: "/getting-started/installation", activeMatch: '/getting-started/'},
         ],
         sidebar: {
-            "/getting-started":  [
+            "/getting-started": [
                 {
                     text: "",
                     items: [
