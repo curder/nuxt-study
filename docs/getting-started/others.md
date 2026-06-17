@@ -35,3 +35,19 @@ definePageMeta({ // [!code ++]
 </script>
 ```
 :::
+
+
+## 打包时图片禁止转换base64
+
+使用 [`assetsInlineLimit`](https://vite.dev/config/build-options#build-assetsinlinelimit) 配置项可以控制图片资源是否被转换为 base64 格式。将其设置为 `0` 可以禁止图片被转换为 base64，从而确保图片以文件形式被打包和加载。
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vite: {
+    build: { 
+      assetsInlineLimit: 0, // 禁止将图片转换为base64
+    }
+  }
+})
+```
