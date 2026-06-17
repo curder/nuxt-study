@@ -1,4 +1,4 @@
-# 站点布局
+# 站点布局 {#layouts}
 
 在 Nuxt 中，布局 `layouts` 是用于定义应用程序的整体结构和外观的模板。布局允许为不同的页面设置不同的结构，比如导航栏、页脚等。
 
@@ -14,13 +14,13 @@
 
 以下是如何在 Nuxt 中创建和使用布局的详细步骤：
 
-## 创建布局
+## 创建布局 {#creating-layouts}
 
-### 创建 `layouts` 目录
+### 创建 `layouts` 目录 {#creating-layouts-directory}
 
 在项目的根目录下创建一个 `layouts` 目录，如果还没有的话。
 
-### 创建布局文件
+### 创建布局文件 {#creating-layout-files}
 
 在 `layouts` 目录中创建一个布局文件，例如 `default.vue`。
 
@@ -35,7 +35,7 @@ my-nuxt3-app/
 └── ...
 ```
 
-### 定义布局
+### 定义布局 {#defining-layouts}
 
 在 `default.vue` 中定义你的布局结构：
 
@@ -63,9 +63,9 @@ my-nuxt3-app/
 在这个例子中，`<slot />` 组件用于渲染当前页面的内容。
 
 
-## 使用布局
+## 使用布局 {#using-layouts}
 
-### 默认布局
+### 默认布局 {#default-layout}
 
 如果站点所有页面都使用同一个布局，可以考虑在 `app.vue` 中进行全局配置。
 
@@ -79,11 +79,11 @@ my-nuxt3-app/
 </template>
 ```
 
-### 使用其他布局
+### 使用其他布局 {#using-alternate-layouts}
 
 如果想为某些页面使用不同的布局，可以创建更多布局文件，并在页面组件中指定要使用的布局。
 
-#### 创建布局文件
+#### 创建布局文件 {#creating-alternate-layout-file}
 
 ```vue
 <!-- layouts/alternate.vue -->
@@ -106,7 +106,7 @@ my-nuxt3-app/
 </template>
 ```
 
-#### 页面中指定布局
+#### 页面中指定布局 {#specifying-layout-in-page}
 
 在页面组件中，可以通过 `definePageMeta` 方法来指定布局：
 
@@ -128,7 +128,7 @@ definePageMeta({
 
 在这个例子中，`about.vue` 页面将使用 `layouts/alternate.vue` 布局。
 
-### 动态布局
+### 动态布局 {#dynamic-layouts}
 
 还可以动态设置布局，例如根据某些条件选择不同的布局：
 

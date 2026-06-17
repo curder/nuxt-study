@@ -1,16 +1,16 @@
-# 常用代码库
+# 常用代码库 {#common-code-libraries}
 
 当开始一个新的 nuxt 项目时，有很多事情需要设置， linting、测试、最佳实践等等，这里列出一些常用的代码库。
 
-## Nuxt Tailwind
+## Nuxt Tailwind {#nuxt-tailwind}
 
-### 自动安装
+### 自动安装 {#auto-install-tailwind}
 
 ```bash [nuxi]
 npx nuxi@latest module add tailwindcss
 ```
 
-### 手动安装
+### 手动安装 {#manual-install-tailwind}
 
 ::: code-group
 
@@ -38,15 +38,15 @@ export default defineNuxtConfig({
 
 更多配置和使用方法跳转到[官方文档](https://tailwindcss.nuxtjs.org/)。
 
-## VueUse
+## VueUse {#vueuse}
 
-### 自动安装
+### 自动安装 {#auto-install-vueuse}
 
 ```bash [nuxi]
 npx nuxi@latest module add vueuse
 ```
 
-### 手动安装
+### 手动安装 {#manual-install-vueuse}
 
 ::: code-group
 
@@ -76,15 +76,15 @@ export default defineNuxtConfig({
 
 更多配置和使用方法跳转到[官方文档](https://vueuse.org/guide/#installation)。
 
-## Nuxt ESLint
+## Nuxt ESLint {#nuxt-eslint}
 
-### 自动安装
+### 自动安装 {#auto-install-eslint}
 
 ```bash [nuxi]
 npx nuxi module add eslint
 ```
 
-### 手动安装
+### 手动安装 {#manual-install-eslint}
 
 ::: code-group
 
@@ -117,15 +117,15 @@ export default defineNuxtConfig({
 
 更多配置和使用方法跳转到[官方文档](https://eslint.nuxt.com/)。
 
-## Nuxt Fonts
+## Nuxt Fonts {#nuxt-fonts}
 
-### 自动安装
+### 自动安装 {#auto-install-fonts}
 
 ```bash [nuxi]
 npx nuxi@latest module add fonts
 ```
 
-### 手动安装
+### 手动安装 {#manual-install-fonts}
 
 ::: code-group
 
@@ -157,15 +157,15 @@ export default defineNuxtConfig({
 
 更多配置和使用方法跳转到[官方文档](https://fonts.nuxtjs.org/)。
 
-## Nuxt SEO
+## Nuxt SEO {#nuxt-seo}
 
-### 自动安装
+### 自动安装 {#auto-install-seo}
 
 ```bash [nuxi]
 npx nuxi module add @nuxtjs/seo
 ```
 
-### 手动安装
+### 手动安装 {#manual-install-seo}
 
 ::: code-group
 
@@ -195,7 +195,7 @@ export default defineNuxtConfig({
 
 更多配置和使用方法跳转到[官方文档](https://nuxtseo.com/docs/nuxt-seo/getting-started/introduction)。
 
-## Nuxt Scripts
+## Nuxt Scripts {#nuxt-scripts}
 
 ```bash [nuxi]
 npx nuxi@latest module add scripts
@@ -203,7 +203,7 @@ npx nuxi@latest module add scripts
 
 更多配置和使用方法跳转到[官方文档](https://scripts.nuxt.com/)。
 
-## Nuxt Icon
+## Nuxt Icon {#nuxt-icon}
 
 Nuxt 的图标模块，包含超过 200,000 个来自 [Iconify](https://iconify.design/) 的可立即使用的图标。
 
@@ -213,7 +213,7 @@ npx nuxi module add icon
 
 更多配置和使用方法跳转到[官方文档](https://nuxt.com/modules/icon)。
 
-## Nuxt Color Mode
+## Nuxt Color Mode {#nuxt-color-mode}
 
 使用 Nuxt 轻松实现自动检测的暗色和亮色模式。
 
@@ -233,7 +233,7 @@ export default defineNuxtConfig({
 
 更多配置和使用方法跳转到[官方文档](https://color-mode.nuxtjs.org/)。
 
-## Nuxt Content
+## Nuxt Content {#nuxt-content}
 
 Nuxt Content 读取项目中的 `content/` 目录，解析 `.md`、`.yml`、`.csv` 和 `.json` 文件，为应用程序创建强大的数据层。
 
@@ -258,7 +258,7 @@ export default defineNuxtConfig({
 
 更多配置和使用方法跳转到[官方文档](https://content.nuxtjs.org/)。
 
-## Auto Animate
+## Auto Animate {#auto-animate}
 
 AutoAnimate 是一款无需配置的嵌入式动画实用程序，可为 Web 应用添加流畅的过渡效果。
 

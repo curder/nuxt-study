@@ -1,4 +1,4 @@
-# 链接 NuxtLink
+# 链接 NuxtLink {#nuxt-link}
 
 在 Nuxt 中，可以使用 [`<NuxtLink>`](https://nuxt.com/docs/api/components/nuxt-link) 组件创建链接以在页面之间导航。
 
@@ -16,9 +16,9 @@ my-nuxt3-app/
 └── ...
 ```
 
-## 类型
+## 类型 {#link-types}
 
-### 内部路由
+### 内部路由 {#internal-links}
 
 - 静态路由
   ```vue
@@ -30,14 +30,14 @@ my-nuxt3-app/
   <NuxtLink :to="{ name: 'todos-slug', params: { slug: 'my-first-todo' } }">Todo Detail</NuxtLink>
   ```
 
-### 外部路由
+### 外部路由 {#external-links}
 ```vue
 <NuxtLink to="https://nuxtjs.org">Nuxt website</NuxtLink>
 ```
 
-## 示例
+## 示例 {#examples}
 
-### 首页 `/`
+### 首页 `/` {#home-page}
 
 在首页上，可以创建链接到 `about` 和 `todos` 页面：
 
@@ -52,7 +52,7 @@ my-nuxt3-app/
 </template>
 ```
 
-### 关于页面 `/about`
+### 关于页面 `/about` {#about-page}
 
 在关于页面上，可以创建一个返回主页的链接：
 
@@ -66,7 +66,7 @@ my-nuxt3-app/
 </template>
 ```
 
-### 待办事项列表 `/todos`
+### 待办事项列表 `/todos` {#todos-page}
 
 在待办事项列表上，可以创建一个链接到特定的详情页面：
 
@@ -80,7 +80,7 @@ my-nuxt3-app/
 </template>
 ```
 
-### 动态待办事项详情 `todos/:slug`
+### 动态待办事项详情 `todos/:slug` {#todo-detail-page}
 
 在动态待办事项的详情页面上，可以显示待办事项的 `slug` 并添加一个返回首页的链接：
 

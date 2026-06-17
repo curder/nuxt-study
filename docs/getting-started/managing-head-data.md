@@ -1,8 +1,8 @@
-# 管理头部数据
+# 管理头部数据 {#managing-head-data}
 
 在 Nuxt 中，使用 [`useHead`](https://nuxt.com/docs/api/composables/use-head) 来管理头部数据非常方便。它可以在组合式 API 中设置页面的 `<head>` 内容，包括标题、meta 标签、link 标签等。
 
-## 设置页面标题和描述
+## 设置页面标题和描述 {#setting-title-and-description}
 
 在页面中使用 `useHead` 来设置和管理头部数据，或者也可以使用 `Head` 和 `Meta` 标签来管理它们。
 
@@ -43,7 +43,7 @@ useHead({ // [!code ++]
 :::
 
 
-## 设置 `link` 和 `script` 标签
+## 设置 `link` 和 `script` 标签 {#setting-link-and-script-tags}
 
 ```vue
 <!-- pages/index.vue -->
@@ -72,7 +72,7 @@ useHead({
 </script>
 ```
 
-## 动态设置头部数据
+## 动态设置头部数据 {#dynamically-setting-head-data}
 
 根据组件的状态动态设置头部数据。
 

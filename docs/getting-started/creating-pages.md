@@ -1,8 +1,8 @@
-# 创建页面
+# 创建页面 {#creating-pages}
 
 在 Nuxt 中，页面文件位于 `pages` 目录中，每个文件代表一个路由。
 
-## 添加页面文件
+## 添加页面文件 {#adding-page-files}
 
 例如，要创建一个站点首页和关于的页面，可以在 `pages` 目录下创建一个 `index.vue` 和 `about.vue` 文件。
 
@@ -17,7 +17,7 @@ my-nuxt3-app/
 └── ...
 ```
 
-## 编写页面组件
+## 编写页面组件 {#writing-page-components}
 
 在对应的文件中，可以编写 Vue 组件。例如：
 
@@ -41,7 +41,7 @@ my-nuxt3-app/
 ```
 :::
 
-## 修改 `app.vue`
+## 修改 `app.vue` {#modifying-app-vue}
 
 修改 `app.vue` 文件的内容来渲染 `pages/index.vue` 和 `pages/about.vue` 页面的内容。
 
@@ -55,7 +55,7 @@ my-nuxt3-app/
 </template>
 ```
 
-## 启动开发服务器
+## 启动开发服务器 {#starting-dev-server}
 
 ```bash
 npm run dev -- -o
@@ -63,11 +63,11 @@ npm run dev -- -o
 
 启动开发服务器后，可以在浏览器中访问 `http://localhost:3000` 和 `http://localhost:3000/about` 来查看创建的页面。
 
-## 其他示例
+## 其他示例 {#other-examples}
 
 在 Nuxt 3 中，`pages` 目录用于自动生成应用的路由，每个 `.vue` 文件和目录对应一个特定的路由路径。以下是一些关于 `pages` 目录的关键点和使用示例：
 
-### 基础页面
+### 基础页面 {#basic-pages}
 
 假设项目结构如下：
 
@@ -85,7 +85,7 @@ my-nuxt3-app/
 - `about.vue` 对应路径 `/about`。
 - `contact.vue` 对应路径 `/contact`。
 
-### 嵌套路由
+### 嵌套路由 {#nested-routes}
 
 可以通过创建子目录来生成嵌套路由。例如：
 
@@ -103,7 +103,7 @@ my-nuxt3-app/
 - `pages/todos/index.vue` 对应路径 `/todos`。
 - `pages/todos/[slug].vue` 对应动态路由 `/todos/:slug`。
 
-### 动态路由
+### 动态路由 {#dynamic-routes}
 
 在 Nuxt 中，可以使用方括号 `[]` 定义动态路由。例如：
 
@@ -125,7 +125,7 @@ const slug = route.params.slug
 使用 `useRoute()` 返回当前路由信息，比如请求的参数。
 :::
 
-### 路由命名
+### 路由命名 {#route-naming}
 
 可以通过在 `pages` 目录中使用特定的命名约定来自定义路由。例如：
 
@@ -143,7 +143,7 @@ const id = route.params.id
 </script>
 ```
 
-### 示例代码
+### 示例代码 {#example-code}
 
 以下是一个示例，展示了如何使用这些概念，项目结构如下：
 

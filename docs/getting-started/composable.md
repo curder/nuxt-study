@@ -1,12 +1,12 @@
-# Composable
+# Composable {#composable}
 
 在 Nuxt 中，[Composable](https://nuxt.com/docs/api/composables/use-app-config) 是一种功能强大的工具，允许创建可复用的逻辑片段，这些逻辑片段可以在多个组件之间共享。
 
-## 创建一个 Composable
+## 创建一个 Composable {#creating-composable}
 
 Composable 通常定义在 `composables` 目录中。假设想创建一个 `useUser` 的 Composable，它负责管理用户的状态和操作。
 
-### 创建 Composable 函数
+### 创建 Composable 函数 {#creating-composable-function}
 
 在 `composables` 目录下创建一个新的文件，例如 `useUser.js` 或 `useUser.ts`：
 
@@ -42,7 +42,7 @@ export function useUser() {
 - `user` 和 `isLoggedIn` 是两个 `ref`，分别存储用户数据和登录状态。
 - `login` 和 `logout` 是操作用户状态的函数。
 
-### 在组件中使用 Composable
+### 在组件中使用 Composable {#using-composable-in-component}
 
 可以在任何组件中导入并使用 `useUser` Composable。
 

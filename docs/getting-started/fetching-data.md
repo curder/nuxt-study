@@ -1,10 +1,10 @@
-# 获取数据
+# 获取数据 {#fetching-data}
 
 在 Nuxt 中，[`useAsyncData`](https://nuxt.com/docs/api/composables/use-async-data) 和 [`useFetch`](https://nuxt.com/docs/api/composables/use-fetch) 是用于[获取数据](https://nuxt.com/docs/getting-started/data-fetching)的强大工具。
 
 它们简化了数据获取的流程，并且在服务器端渲染（SSR）和客户端渲染（CSR）中都可以使用。
 
-## `useAsyncData`
+## `useAsyncData` {#use-async-data}
 
 `useAsyncData` 是 Nuxt 提供的一个钩子，用于在页面加载时进行异步数据获取，借助 [$fetch](https://nuxt.com/docs/api/utils/dollarfetch) 助手以发出 HTTP 请求。
 
@@ -38,7 +38,7 @@ if (error.value) {
 
 > 如果需要发送其他类型的请求，比如 `POST` 可以给 `$fetch` 传递第二个参数，比如：`$fetch(URL, { method: 'POST', body: { hello: 'world '}})`，具体 `$fetch` 的使用[参考官网](https://nuxt.com/docs/api/utils/dollarfetch)。
 
-## `useFetch`
+## `useFetch` {#use-fetch}
 
 `useFetch` 是 Nuxt 提供的一个钩子，类似于 `useAsyncData`，但更灵活。它可以在客户端和服务端获取数据，并自动处理数据和错误。
 
@@ -69,9 +69,9 @@ if (error.value) {
 > 如果需要发送其他类型的请求，比如 `POST` 可以给 `useFetch` 传递第二个参数，比如：`useFetch(URL, { method: 'POST', body: { hello: 'world '}})`，具体 `useFetch` 的使用[参考官网](https://nuxt.com/docs/api/composables/use-fetch#params)。
 
 
-## 参数
+## 参数 {#params}
 
-### `server`
+### `server` {#server}
 
 是否在服务器上获取数据，默认为 `true`。
 

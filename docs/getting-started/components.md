@@ -1,4 +1,4 @@
-# 组件 `Components`
+# 组件 `Components` {#components}
 
 在 Nuxt 中，组件 `components` 是构建页面的基本单元。
 
@@ -6,9 +6,9 @@
 
 以下是如何在 Nuxt 中创建和使用组件的详细步骤：
 
-## 创建组件
+## 创建组件 {#creating-components}
 
-### 创建 `components` 目录
+### 创建 `components` 目录 {#creating-components-directory}
 
 在项目的根目录下创建一个 `components` 目录。
 
@@ -25,7 +25,7 @@
  └── ...
  ```
 
-### 定义组件
+### 定义组件 {#defining-components}
 
 在 `components` 目录中创建一个 Vue 文件，例如 `MyComponent.vue`，并定义组件逻辑：
 
@@ -54,9 +54,9 @@ const props = defineProps({
 </script>
 ```
 
-## 使用组件
+## 使用组件 {#using-components}
 
-### 在页面中使用组件
+### 在页面中使用组件 {#using-components-in-pages}
 
 ::: tip 提示
 在页面组件中可以直接使用自定义组件。因为 Nuxt 会自动注册 `components` 目录中的所有组件，因此不需要手动导入它们。
@@ -72,7 +72,7 @@ const props = defineProps({
 </template>
 ```
 
-### 在布局中使用组件
+### 在布局中使用组件 {#using-components-in-layouts}
 
 可以在布局文件中使用自定义组件：
 
@@ -98,7 +98,7 @@ const props = defineProps({
  </template>
  ```
 
-### 动态组件
+### 动态组件 {#dynamic-components}
 
 可以根据某些条件动态地渲染组件。例如：
 
@@ -118,7 +118,7 @@ const currentComponent = ref(MyComponent)
 </script>
 ```
 
-### 异步组件
+### 异步组件 {#async-components}
 
 可以使用动态导入来定义异步组件，这在需要按需加载组件时非常有用：
 

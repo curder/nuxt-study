@@ -1,18 +1,18 @@
-# 样式 Styles
+# 样式 Styles {#styles}
 
 在 Nuxt 中，可以使用 CSS 或 SASS 来为应用程序添加样式。
 
 以下是如何在 Nuxt 中配置和使用 CSS 或 SASS 的详细步骤：
 
-## 使用 CSS
+## 使用 CSS {#using-css}
 
-### 全局 CSS
+### 全局 CSS {#global-css}
 
 在 `nuxt.config.ts` 文件中配置全局 CSS。
 
 将 CSS 文件放置在 `assets` 目录下，并在 `nuxt.config.ts` 文件中引用它们。
 
-#### 创建 CSS 文件
+#### 创建 CSS 文件 {#creating-css-file}
 
 创建 `assets` 目录，并在其中创建一个 CSS 文件，例如 `main.css`：
 
@@ -26,7 +26,7 @@ body {
 }
 ```
 
-#### 配置
+#### 配置 {#configuring-global-css}
 
 - 可以在 `nuxt.config.ts` 文件中引入全局 CSS：
 
@@ -69,7 +69,7 @@ body {
     ```
     :::
 
-### 局部 CSS
+### 组件级样式 {#component-css}
 
 可以在组件、页面或布局文件中添加局部 CSS 样式。使用 `<style scoped>` 标签可以确保样式只作用于当前组件。
 
@@ -90,9 +90,9 @@ body {
    </style>
    ```
 
-## 使用 SASS/SCSS
+## 使用 SASS/SCSS {#using-sass}
 
-### 安装依赖
+### 安装依赖 {#installing-sass-dependency}
 
 首先，安装 SASS 依赖包：
 
@@ -100,11 +100,11 @@ body {
 npm install -D sass
 ```
 
-### 全局 SASS
+### 全局 SASS {#global-sass}
 
  将 SASS 文件放置在 `assets` 目录下，并在 `nuxt.config.ts` 文件中引用它们，或者在 `app.vue` 文件中引用它们。
 
-#### 创建 SASS 文件
+#### 创建 SASS 文件 {#creating-sass-file}
 
   ```scss
   /* assets/main.scss */
@@ -117,7 +117,7 @@ npm install -D sass
   }
   ```
 
-#### 配置
+#### 配置 {#configuring-global-sass}
 
 - 可以在 `nuxt.config.ts` 文件中引入全局 SASS 文件：
 
@@ -162,7 +162,7 @@ npm install -D sass
     ```
     :::
 
-### 局部 SASS
+### 组件级 SASS {#component-sass}
 
    可以在组件文件中添加局部 SASS 样式。使用 `<style scoped lang="scss">` 标签可以确保样式只作用于当前组件。
 
@@ -186,7 +186,7 @@ npm install -D sass
    </style>
    ```
 
-### 使用 SASS 的附加功能
+### 使用 SASS 的附加功能 {#using-sass-features}
 
 可以在全局 SASS 文件中定义变量和混合，并在组件的 SASS 文件中使用它们。
 
@@ -234,17 +234,17 @@ npm install -D sass
   </style>
   ```
   
-## Tailwind CSS
+## Tailwind CSS {#tailwind-css}
 
 在 Nuxt 中使用 [Tailwind CSS](https://tailwindcss.com/docs) 模块是非常方便的。Nuxt 提供了一个官方模块，可以简化配置过程。
 
-### 安装
+### 安装 {#installing-tailwindcss}
 
 ```bash
 npm install -D @nuxtjs/tailwindcss
 ```
 
-### 配置
+### 配置 {#configuring-tailwindcss}
 
 在 `nuxt.config.ts` 文件中添加 `@nuxtjs/tailwindcss` 模块：
 
@@ -255,7 +255,7 @@ export default defineNuxtConfig({
 })
 ```
 
-### 自定义配置
+### 自定义配置 {#customizing-tailwindcss}
 
 1. **生成 Tailwind 配置文件**
 

@@ -1,12 +1,12 @@
-# 服务器 api
+# 服务器 api {#server-api}
 
 在 Nuxt 中，构建一个 [Server API](https://nuxt.com/docs/guide/directory-structure/server) 可以通过 `server/api` 目录来实现。
 
 允许创建服务器端的 API 路由，直接在 Nuxt 应用中处理后端逻辑。
 
-## 创建 Server API 路由
+## 创建 Server API 路由 {#creating-server-api-routes}
 
-### 创建 `server/api` 目录
+### 创建 `server/api` 目录 {#creating-server-api-directory}
 
 在 Nuxt 项目的根目录下创建 `server/api` 目录：
 
@@ -21,7 +21,7 @@ my-nuxt3-app/
 └── package.json
 ```
 
-### 创建一个 API 路由文件
+### 创建一个 API 路由文件 {#creating-api-route-file}
 
 在 `server/api` 目录下创建一个 API 路由文件，例如 `hello.js`：
 
@@ -37,7 +37,7 @@ export default defineEventHandler((event) => {
 在这个示例中：
 - `defineEventHandler` 用于定义一个事件处理器，处理传入的请求并返回一个响应。
 
-### 访问 API 路由
+### 访问 API 路由 {#accessing-api-route}
 
 通过 `http://localhost:3000/api/hello` 访问这个 API 路由，得到的响应将是：
 
@@ -47,9 +47,9 @@ export default defineEventHandler((event) => {
 }
 ```
 
-## 在客户端使用 API
+## 在客户端使用 API {#using-api-in-client}
 
-### 使用 `useFetch` 获取 API 数据
+### 使用 `useFetch` 获取 API 数据 {#using-usefetch-to-get-api-data}
 
 可以在页面或组件中使用 `useFetch` 钩子来获取 API 数据：
 
@@ -73,11 +73,11 @@ const message = data?.value?.message
 在这个示例中：
 - `useFetch` 钩子用于从 `/api/hello` 获取数据，并在模板中显示返回的 `message`。
 
-## 创建更复杂的 API 路由
+## 创建更复杂的 API 路由 {#creating-more-complex-api-routes}
 
 可以创建更复杂的 API 路由，包括处理请求参数、请求体和响应状态码。
 
-### 处理请求参数
+### 处理请求参数 {#handling-query-parameters}
 
 ```js
 // server/api/greet.js
@@ -97,7 +97,7 @@ export default defineEventHandler((event) => {
 }
 ```
 
-### 2. 处理请求体
+### 2. 处理请求体 {#handling-request-body}
 
 ```js
 // server/api/echo.js
