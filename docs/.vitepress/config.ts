@@ -25,6 +25,7 @@ export default defineConfig({
         ],
         nav: [
             {text: "基础入门", link: "/getting-started/installation", activeMatch: '/getting-started/'},
+            {text: "进阶指南", link: "/advanced/runtime-config", activeMatch: '/advanced/'}
         ],
         sidebar: {
             "/getting-started": [
@@ -46,6 +47,14 @@ export default defineConfig({
                     ]
                 },
             ],
-        }
+            "/advanced": [
+                {
+                    text: "",
+                    items: [
+                        {text: "运行时配置 runtimeConfig", link: "/advanced/runtime-config"},
+                    ]
+                },
+            ]
+        },
     }
 });
