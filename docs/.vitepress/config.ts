@@ -53,6 +53,7 @@ export default defineConfig({
                     items: [
                         { text: "运行时配置 runtimeConfig", link: "/advanced/runtime-config" },
                         { text: "自动导入 Auto Imports", link: "/advanced/auto-import" },
+                        { text: "自定义指令 v-interpolate", link: "/advanced/custom-directive-v-interpolate" },
                     ]
                 },
             ]
