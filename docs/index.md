@@ -6,8 +6,9 @@ hero:
     text: ""
     tagline: 基于Vue3和Vite构建，旨在提供更快的性能和更好的开发体验
     image:
-        src: /nuxt.svg
-        alt: Nuxt 学习
+      light: /nuxt.svg
+      dark: /nuxt-dark.svg
+      alt: Nuxt 学习
 features:
     - title: 更快的性能
       details: 通过使用Vite作为默认构建工具，Nuxt 3 提供了更快的冷启动和热更新速度。
