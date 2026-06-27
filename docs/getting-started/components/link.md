@@ -5,15 +5,18 @@
 假设项目结构如下：
 
 ```
-my-nuxt3-app/
-├── pages/
-│   ├── index.vue
-│   ├── about.vue
-│   ├── todos/
-│   │   ├── index.vue
-│   │   └── [slug].vue
-├── nuxt.config.js
-└── ...
+my-nuxt4-app/
+├── app
+│   ├── app.vue
+│   └── pages
+│       ├── about.vue
+│       ├── todos/
+│       │   ├── index.vue
+│       │   └── [slug].vue
+│       └── index.vue
+├── nuxt.config.ts
+├── ...
+└── tsconfig.json
 ```
 
 ## 类型 {#link-types}
@@ -86,15 +89,14 @@ my-nuxt3-app/
 
 ```vue
 <!--pages/todos/[slug].vue-->
+<script setup>
+const route = useRoute()
+const slug = route.params.slug
+</script>
 <template>
   <div>
     <h1>Todo: {{ slug }}</h1>
     <nuxt-link to="/todos">Back to Todos</nuxt-link>
   </div>
 </template>
-
-<script setup>
-const route = useRoute()
-const slug = route.params.slug
-</script>
 ```
