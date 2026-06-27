@@ -2,19 +2,19 @@
 
 ## 环境准备 {#environment-setup}
 
-- **Node.js** 需要 [Node.js](https://nodejs.org/zh-cn) >= `V18.0.0`
+- **Node.js** 需要 [Node.js](https://nodejs.org/zh-cn) >= `v20.x`
 - **文本编辑器** - 推荐使用带有官方 Vue 扩展的 [Visual Studio Code](https://code.visualstudio.com/)
 - **终端** 用于运行 Nuxt 命令
 - **[npm](https://www.npmjs.com/)** 或 **[Yarn](https://yarnpkg.com/)** 安装Node依赖
 
 ## 安装步骤 {#installation-steps}
 
-### 创建新的 Nuxt 3 项目 {#create-nuxt3-project}
+### 创建新的 Nuxt 4 项目 {#create-nuxt4-project}
 
 打开命令行，导航到你希望创建项目的目录，然后运行以下命令：
 
 ```bash [npm]
-npx nuxi@latest init my-nuxt3-app
+npx nuxi@latest init my-nuxt4-app
 ```
 
 ::: tip 温馨提示
@@ -24,7 +24,7 @@ npx nuxi@latest init my-nuxt3-app
 ### 进入项目目录 {#navigate-to-project-directory}
 
 ```bash
-cd my-nuxt3-app
+cd my-nuxt4-app
 ```
 
 ### 启动开发服务器 {#start-development-server}
@@ -42,13 +42,13 @@ npm run dev -- -o
 
 ```bash
 # 创建新项目
-npx nuxi init my-nuxt3-app
+npx nuxi init my-nuxt4-app
 
 # 进入项目目录
-cd my-nuxt3-app
+cd my-nuxt4-app
 
 # 启动开发服务器
 npm run dev -- -o
 ```
 
-更多详细信息和配置选项，请参阅 [Nuxt 3 官方文档](https://nuxt.com/docs)。
+更多详细信息和配置选项，请参阅 [Nuxt 4 官方文档](https://nuxt.com/docs)。
