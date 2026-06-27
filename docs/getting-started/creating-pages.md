@@ -61,7 +61,9 @@ my-nuxt4-app/
 ```vue {3}
 <template>
   <div>
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
 ```
