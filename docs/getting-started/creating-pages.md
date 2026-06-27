@@ -1,20 +1,25 @@
 # 创建页面 {#creating-pages}
 
-在 Nuxt 中，页面文件位于 `pages` 目录中，每个文件代表一个路由。
+在 Nuxt 4 中，页面文件位于 `app/pages` 目录中，每个文件代表一个路由。
+
+> 如果是 Nuxt 3 项目，则页面文件位于 `pages` 目录中。
 
 ## 添加页面文件 {#adding-page-files}
 
-例如，要创建一个站点首页和关于的页面，可以在 `pages` 目录下创建一个 `index.vue` 和 `about.vue` 文件。
+例如，要创建一个站点首页和关于的页面，可以在 `app/pages` 目录下创建一个 `index.vue` 和 `about.vue` 文件。
 
 目录结构如下：
 
-```text
-my-nuxt3-app/
-├── pages/
-│   ├── index.vue // [!code ++]
-│   └── about.vue // [!code ++]
-├── nuxt.config.js
-└── ...
+```text {5-6}
+my-nuxt4-app/
+├── app
+│   ├── app.vue
+│   └── pages
+│       ├── about.vue
+│       └── index.vue
+├── nuxt.config.ts
+├── ...
+└── tsconfig.json
 ```
 
 ## 编写页面组件 {#writing-page-components}
@@ -22,7 +27,11 @@ my-nuxt3-app/
 在对应的文件中，可以编写 Vue 组件。例如：
 
 ::: code-group
-```vue [pages/index.vue]
+
+```vue [app/pages/index.vue]
+<script setup>
+// 这里可以编写页面逻辑
+</script>
 <template>
   <div>
     <h1>Index Page</h1>
@@ -31,7 +40,10 @@ my-nuxt3-app/
 </template>
 ```
 
-```vue [pages/about.vue]
+```vue [app/pages/about.vue]
+<script setup>
+// 这里可以编写页面逻辑
+</script>
 <template>
   <div>
     <h1>About Page</h1>
@@ -39,18 +51,17 @@ my-nuxt3-app/
   </div>
 </template>
 ```
+
 :::
 
 ## 修改 `app.vue` {#modifying-app-vue}
 
-修改 `app.vue` 文件的内容来渲染 `pages/index.vue` 和 `pages/about.vue` 页面的内容。
+修改 `app/app.vue` 文件的内容来渲染 `app/pages/index.vue` 和 `app/pages/about.vue` 页面的内容。
 
-```vue
+```vue {3}
 <template>
   <div>
-    <NuxtRouteAnnouncer /> // [!code --]
-    <NuxtWelcome /> // [!code --]
-    <NuxtPage /> // [!code ++]
+    <NuxtPage />
   </div>
 </template>
 ```
@@ -65,50 +76,52 @@ npm run dev -- -o
 
 ## 其他示例 {#other-examples}
 
-在 Nuxt 3 中，`pages` 目录用于自动生成应用的路由，每个 `.vue` 文件和目录对应一个特定的路由路径。以下是一些关于 `pages` 目录的关键点和使用示例：
+在 Nuxt 4 中，`pages` 目录用于自动生成应用的路由，每个 `.vue` 文件和目录对应一个特定的路由路径。以下是一些关于 `pages` 目录的关键点和使用示例：
 
 ### 基础页面 {#basic-pages}
 
 假设项目结构如下：
 
 ```text
-my-nuxt3-app/
-├── pages/
-│   ├── index.vue // [!code ++]
-│   ├── about.vue // [!code ++]
-│   └── contact.vue // [!code ++]
-├── nuxt.config.js
+my-nuxt4-app/
+├── app/
+│   ├── pages/
+│   │   ├── index.vue
+│   │   ├── about.vue
+│   │   └── contact.vue
+├── nuxt.config.ts
 └── ...
 ```
 
-- `index.vue` 对应根路径 `/`。
-- `about.vue` 对应路径 `/about`。
-- `contact.vue` 对应路径 `/contact`。
+- `index.vue` 页面对应根路径 `/`。
+- `about.vue` 页面对应路径 `/about`。
+- `contact.vue` 页面对应路径 `/contact`。
 
 ### 嵌套路由 {#nested-routes}
 
 可以通过创建子目录来生成嵌套路由。例如：
 
 ```
-my-nuxt3-app/
-├── pages/
-│   ├── index.vue
-│   ├── todos/
-│   │   ├── index.vue // [!code ++]
-│   │   └── [slug].vue // [!code ++]
-├── nuxt.config.js
+my-nuxt4-app/
+├── app/
+│   ├── pages/
+│   │   ├── index.vue
+│   │   ├── todos/
+│   │   │   ├── index.vue // [!code ++]
+│   │   │   └── [slug].vue // [!code ++]
+├── nuxt.config.ts
 └── ...
 ```
 
-- `pages/todos/index.vue` 对应路径 `/todos`。
-- `pages/todos/[slug].vue` 对应动态路由 `/todos/:slug`。
+- `app/pages/todos/index.vue` 页面对应路径 `/todos`。
+- `app/pages/todos/[slug].vue` 页面对应动态路由 `/todos/:slug`。
 
 ### 动态路由 {#dynamic-routes}
 
 在 Nuxt 中，可以使用方括号 `[]` 定义动态路由。例如：
 
 ```vue
-<!-- pages/blog/[slug].vue -->
+<!-- app/pages/blog/[slug].vue -->
 <template>
   <div>
     <h1>Blog Post: {{ slug }}</h1>
@@ -116,8 +129,8 @@ my-nuxt3-app/
 </template>
 
 <script setup>
-const route = useRoute()
-const slug = route.params.slug
+const route = useRoute();
+const slug = route.params.slug;
 </script>
 ```
 
@@ -130,7 +143,7 @@ const slug = route.params.slug
 可以通过在 `pages` 目录中使用特定的命名约定来自定义路由。例如：
 
 ```vue
-<!-- pages/user/[id]/profile.vue -->
+<!-- app/pages/user/[id]/profile.vue -->
 <template>
   <div>
     <h1>User Profile: {{ id }}</h1>
@@ -138,8 +151,8 @@ const slug = route.params.slug
 </template>
 
 <script setup>
-const route = useRoute()
-const id = route.params.id
+const route = useRoute();
+const id = route.params.id;
 </script>
 ```
 
@@ -148,21 +161,22 @@ const id = route.params.id
 以下是一个示例，展示了如何使用这些概念，项目结构如下：
 
 ```
-my-nuxt3-app/
-├── pages/
-│   ├── index.vue
-│   ├── about.vue
-│   ├── todos/
+my-nuxt4-app/
+├── app/
+│   ├── pages/
 │   │   ├── index.vue
-│   │   └── [slug].vue
-│   └── user/
-│       └── [id]/
-│           └── profile.vue
-├── nuxt.config.js
+│   │   ├── about.vue
+│   │   ├── todos/
+│   │   │   ├── index.vue
+│   │   │   └── [slug].vue
+│   │   └── user/
+│   │       └── [id]/
+│   │           └── profile.vue
+├── nuxt.config.ts
 └── ...
 ```
 
-- `pages/index.vue`
+- `app/pages/index.vue`
 
 ```vue
 <template>
@@ -174,7 +188,7 @@ my-nuxt3-app/
 </template>
 ```
 
-- `pages/about.vue`
+- `app/pages/about.vue`
 
 ```vue
 <template>
@@ -184,7 +198,7 @@ my-nuxt3-app/
 </template>
 ```
 
-- `pages/todos/index.vue`
+- `app/pages/todos/index.vue`
 
 ```vue
 <template>
@@ -195,7 +209,7 @@ my-nuxt3-app/
 </template>
 ```
 
-- `pages/todos/[slug].vue`
+- `app/pages/todos/[slug].vue`
 
 ```vue
 <template>
@@ -205,12 +219,12 @@ my-nuxt3-app/
 </template>
 
 <script setup>
-const route = useRoute()
-const slug = route.params.slug
+const route = useRoute();
+const slug = route.params.slug;
 </script>
 ```
 
-- `pages/user/[id]/profile.vue`
+- `app/pages/user/[id]/profile.vue`
 
 ```vue
 <template>
@@ -220,8 +234,8 @@ const slug = route.params.slug
 </template>
 
 <script setup>
-const id = useRoute().params.id
+const id = useRoute().params.id;
 </script>
 ```
 
-通过以上示例，可以看到如何在 Nuxt 3 中创建和组织页面，以及如何使用动态路由和嵌套路由来构建复杂的导航结构。
+通过以上示例，可以看到如何在 Nuxt 4 中创建和组织页面，以及如何使用动态路由和嵌套路由来构建复杂的导航结构。
