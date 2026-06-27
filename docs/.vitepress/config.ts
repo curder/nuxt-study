@@ -24,8 +24,8 @@ export default defineConfig({
             { icon: 'github', link: 'https://github.com/curder/nuxt-study' }
         ],
         nav: [
-            { text: "基础入门", link: "/getting-started/installation", activeMatch: '/getting-started/' },
-            { text: "进阶指南", link: "/advanced/runtime-config", activeMatch: '/advanced/' }
+            { text: "基础", link: "/getting-started/installation", activeMatch: '/getting-started/' },
+            { text: "进阶", link: "/advanced/runtime-config", activeMatch: '/advanced/' }
         ],
         sidebar: {
             "/getting-started": [
