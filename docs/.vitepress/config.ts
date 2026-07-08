@@ -55,7 +55,8 @@ export default defineConfig({
                         { text: "自动导入 Auto Imports", link: "/advanced/auto-import" },
                         { text: "自定义指令 v-interpolate", link: "/advanced/custom-directive-v-interpolate" },
                         { text: "客户端缓存 getCachedData", link: "/advanced/get-cached-data" },
-                        { text: "服务端渲染验证", link: "/advanced/server-side-rendering-verification" }
+                        { text: "服务端渲染验证", link: "/advanced/server-side-rendering-verification" },
+                        { text: "window.useNuxtApp 深度解析", link: "/advanced/use-nuxt-app"},
                     ]
                 },
             ]
