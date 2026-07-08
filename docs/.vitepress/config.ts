@@ -57,7 +57,8 @@ export default defineConfig({
                         { text: "客户端缓存 getCachedData", link: "/advanced/get-cached-data" },
                         { text: "服务端渲染验证", link: "/advanced/server-side-rendering-verification" },
                         { text: "window.useNuxtApp 深度解析", link: "/advanced/use-nuxt-app"},
-                        { text: "Vue 3 中的 shallowRef", link: "/advanced/shallow-ref"}
+                        { text: "Vue 3 中的 shallowRef", link: "/advanced/shallow-ref"},
+                        { text: "如何精简Nuxt Payload体积", link: "/advanced/how-to-reduce-payload-size"},
                     ]
                 },
             ]
