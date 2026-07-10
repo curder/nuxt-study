@@ -62,6 +62,7 @@ export default defineConfig({
                         { text: "如何精简Nuxt Payload体积", link: "/advanced/how-to-reduce-payload-size"},
                         { text: "Lazy 组件前缀", link: "/advanced/lazy-component-prefix"},
                         { text: "Vue / Nuxt 源码里的注释能删吗", link: "/advanced/can-comments-in-vue-or-nuxt-source-code-be-deleted"},
+                        { text: "Nuxt 与 Nitro 的分工", link: "/advanced/nuxt-vs-nitro-what-does-what"},
                     ]
                 },
             ]
