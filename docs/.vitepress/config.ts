@@ -59,6 +59,7 @@ export default defineConfig({
                         { text: "window.useNuxtApp 深度解析", link: "/advanced/use-nuxt-app"},
                         { text: "Vue 3 中的 shallowRef", link: "/advanced/shallow-ref"},
                         { text: "如何精简Nuxt Payload体积", link: "/advanced/how-to-reduce-payload-size"},
+                        { text: "Lazy 组件前缀", link: "/advanced/lazy-component-prefix"},
                     ]
                 },
             ]
