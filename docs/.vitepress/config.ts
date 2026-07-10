@@ -63,6 +63,7 @@ export default defineConfig({
                         { text: "Lazy 组件前缀", link: "/advanced/lazy-component-prefix"},
                         { text: "Vue / Nuxt 源码里的注释能删吗", link: "/advanced/can-comments-in-vue-or-nuxt-source-code-be-deleted"},
                         { text: "Nuxt 与 Nitro 的分工", link: "/advanced/nuxt-vs-nitro-what-does-what"},
+                        { text: "Nuxt 中代理后端 API 的正确方式", link: "/advanced/the-best-way-to-proxy-api-in-nuxt"},
                     ]
                 },
             ]
