@@ -137,9 +137,9 @@ export default defineNuxtConfig({
 - **`proxyRequest` 来自 h3。** 它是 Nitro 底层框架 h3（原文口播 "A3/H3"）暴露的 helper，接收 `event` 和 `target` 两个参数，且被自动导入（auto-import），无需手写 import。h3 还提供 `proxyRequestHeaders` 等其他 helper，可在 h3 的 JS docs 里查到。
 - **`joinURL` 来自 `ufo`。** 它能优雅处理尾部斜杠拼接问题。虽然它随 Nitro 一起可用、不写进 `package.json` 也能 import，但作者建议还是把它显式加入依赖，做好依赖管理。
 
-作者演示：这套方案客户端正常、`View Page Source` 确认 SSR 生效，而且构建后只要修改环境变量指向另一个 API / 服务器 / URL，代理立刻切换——三条标准**全部通过**。
+这套方案客户端正常、`View Page Source` 确认 SSR 生效，而且构建后只要修改环境变量指向另一个 API / 服务器 / URL，代理立刻切换——三条标准**全部通过**。
 
-## 常见案例：如何选型（可执行步骤）
+## 常见案例 {#common-cases}
 
 1. **纯客户端 SPA、无 SSR** → Vite `server.proxy` 或 Nitro `devProxy` 够用，但仅限开发调试。
 2. **需要 SSR 且代理目标是固定静态 URL** → 直接用 `routeRules` 的 `proxy`，最省事。
@@ -148,7 +148,7 @@ export default defineNuxtConfig({
 5. 用正则 `path.replace(/^\/api/, '')` 剥掉前缀，再用 `joinURL` 拼接，避免斜杠问题。
 6. 运行时通过 `NUXT_MY_PROXY_URL` 这类环境变量覆盖，无需重新构建。
 
-## 注意事项
+## 注意事项 {#important}
 
 | 细节                                | 说明                                                              |
 |-----------------------------------|-----------------------------------------------------------------|
