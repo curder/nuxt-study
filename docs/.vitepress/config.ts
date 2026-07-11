@@ -68,6 +68,7 @@ export default defineConfig({
                         { text: "更易调试的Hydration错误与useId", link: "/advanced/vue-3-4-improved-hydration-errors-and-useid" },
                         { text: "useState 和全局状态管理", link: "/advanced/nuxt-usestate-hydration-and-global-state" },
                         { text: "组织 Composition API 代码", link: "/advanced/organize-composition-api-code" },
+                        { text: "Nuxt SSR 中的类序列化", link: "/advanced/nuxt-ssr-class-serialization-payload-plugins"},
                     ]
                 },
             ]
