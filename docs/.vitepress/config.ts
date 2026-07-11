@@ -76,6 +76,7 @@ export default defineConfig({
                         { text: "useAsyncData与useFetch对比", link: "/advanced/nuxt3-useasyncdata-vs-usefetch" },
                         { text: "让Nuxt配置感知环境", link: "/advanced/environment-aware-nuxt-configuration" },
                         { text: "在Nuxt和Nitro中集成WebSockets", link: "/advanced/integrating-websockets-in-nuxt-and-nitro" },
+                        { text: "用构建缓存加速 Nuxt 打包", link: "/advanced/faster-nuxt-builds-with-build-cache" },
                     ]
                 },
             ]
