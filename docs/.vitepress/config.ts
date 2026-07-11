@@ -75,6 +75,7 @@ export default defineConfig({
                         { text: "避免在Vue中失去响应性", link: "/advanced/avoid-losing-reactivity-in-vue" },
                         { text: "useAsyncData与useFetch对比", link: "/advanced/nuxt3-useasyncdata-vs-usefetch" },
                         { text: "让Nuxt配置感知环境", link: "/advanced/environment-aware-nuxt-configuration" },
+                        { text: "在Nuxt和Nitro中集成WebSockets", link: "/advanced/integrating-websockets-in-nuxt-and-nitro" },
                     ]
                 },
             ]
