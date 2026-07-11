@@ -74,6 +74,7 @@ export default defineConfig({
                         { text: "Nuxt 插件定义执行顺序", link: "/advanced/nuxt-plugin-object-syntax-depends-on-parallel" },
                         { text: "避免在Vue中失去响应性", link: "/advanced/avoid-losing-reactivity-in-vue" },
                         { text: "useAsyncData与useFetch对比", link: "/advanced/nuxt3-useasyncdata-vs-usefetch" },
+                        { text: "让Nuxt配置感知环境", link: "/advanced/environment-aware-nuxt-configuration" },
                     ]
                 },
             ]
