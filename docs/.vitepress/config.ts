@@ -65,6 +65,7 @@ export default defineConfig({
                         { text: "Nuxt 与 Nitro 的分工", link: "/advanced/nuxt-vs-nitro-what-does-what"},
                         { text: "Nuxt 中代理后端 API 的正确方式", link: "/advanced/the-best-way-to-proxy-api-in-nuxt"},
                         { text: "别再滥用 useFetch", link: "/advanced/stop-misusing-usefetch-in-nuxt"},
+                        { text: "更易调试的Hydration错误与useId", link: "/advanced/vue-3-4-improved-hydration-errors-and-useid"},
                     ]
                 },
             ]
