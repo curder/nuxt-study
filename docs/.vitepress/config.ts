@@ -71,6 +71,7 @@ export default defineConfig({
                         { text: "Nuxt SSR 中的类序列化", link: "/advanced/nuxt-ssr-class-serialization-payload-plugins" },
                         { text: "共享数据 sharedPrerenderData", link: "/advanced/nuxt-3-10-shared-prerender-data" },
                         { text: "Repository 模式优雅封装 API", link: "/advanced/nuxt-3-repository-pattern-custom-fetch" },
+                        { text: "Nuxt 插件定义执行顺序", link: "/advanced/nuxt-plugin-object-syntax-depends-on-parallel" },
                     ]
                 },
             ]
