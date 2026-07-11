@@ -72,7 +72,8 @@ export default defineConfig({
                         { text: "共享数据 sharedPrerenderData", link: "/advanced/nuxt-3-10-shared-prerender-data" },
                         { text: "Repository 模式优雅封装 API", link: "/advanced/nuxt-3-repository-pattern-custom-fetch" },
                         { text: "Nuxt 插件定义执行顺序", link: "/advanced/nuxt-plugin-object-syntax-depends-on-parallel" },
-                        { text: "避免在 Vue 中失去响应性", link: "/advanced/avoid-losing-reactivity-in-vue" },
+                        { text: "避免在Vue中失去响应性", link: "/advanced/avoid-losing-reactivity-in-vue" },
+                        { text: "useAsyncData与useFetch对比", link: "/advanced/nuxt3-useasyncdata-vs-usefetch" },
                     ]
                 },
             ]
