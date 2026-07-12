@@ -77,6 +77,7 @@ export default defineConfig({
                         { text: "让Nuxt配置感知环境", link: "/advanced/environment-aware-nuxt-configuration" },
                         { text: "在Nuxt和Nitro中集成WebSockets", link: "/advanced/integrating-websockets-in-nuxt-and-nitro" },
                         { text: "用构建缓存加速 Nuxt 打包", link: "/advanced/faster-nuxt-builds-with-build-cache" },
+                        { text: "Nuxt 测试入门", link: "/advanced/nuxt-test-utils-primer" },
                     ]
                 },
             ]
