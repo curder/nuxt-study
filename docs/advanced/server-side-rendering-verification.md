@@ -28,7 +28,7 @@ window.useNuxtApp()
 
 返回 `true` 说明当前页由服务端渲染进入，且未被 route rules 排除。
 
-> `window.useNuxtApp` 是 Nuxt 3 暴露到浏览器的调试入口，仅用于开发排查，生产环境需注意其安全性（作者另有一期专门讨论）。
+> `window.useNuxtApp` 是 Nuxt 3 暴露到浏览器的调试入口，仅用于开发排查，生产环境需注意其安全性。
 
 
 ### 二、用 `data-ssr` 属性做目视校验 {#check-ssr-with-data-ssr}

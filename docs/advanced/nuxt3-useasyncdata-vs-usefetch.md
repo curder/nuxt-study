@@ -38,7 +38,7 @@ const {data, status, error} = await useFetch('/api/products')
 
 **添加查询参数**
 
-作者演示了如何附加 query 参数，通过 `query` 选项传入：
+附加 query 参数，通过 `query` 选项传入：
 
 ```ts
 const {data} = await useFetch('/api/products', {
@@ -65,11 +65,11 @@ const {data} = await useFetch('/api/products', {
 category.value = 'boots'
 ```
 
-作者强调，`useFetch` 默认会 watch 其 URL 和 options 中的响应式源，因此参数变化能自动触发刷新——这正是它「省心」的地方。
+`useFetch` 默认会 watch 其 URL 和 options 中的响应式源，因此参数变化能自动触发刷新——这正是它「省心」的地方。
 
 ## 三、拆解 useFetch：用 useAsyncData + $fetch 复刻它 {#nuxt3-useasyncdata-vs-usefetch-replicate}
 
-为了证明「`useFetch` 就是语法糖」，作者演示了如何用 `useAsyncData` 加 `$fetch` 手动实现等价效果。
+为了证明「`useFetch` 就是语法糖」，如何用 `useAsyncData` 加 `$fetch` 手动实现等价效果。
 
 **基本形态**
 

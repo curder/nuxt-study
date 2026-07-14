@@ -105,7 +105,7 @@ const componentToRender = computed(() =>
 注意：从 `#components` 导入时要用**具名导入（named import）**而非默认导入，因为 Nuxt 把所有组件都挂在那里以具名形式导出。
 
 缺点有两个：
-1. 手动 import 会在文件顶部堆一堆导入语句（是否可接受属于个人偏好，作者本人更喜欢自动导入的"低噪音"）；
+1. 手动 import 会在文件顶部堆一堆导入语句（是否可接受属于个人偏好）；
 2. 是**这些是同步导入**，两个组件都会被打进同一份 chunk。想象 CMS 里一百个组件全部同步导入，首屏负担会非常重。
 
 ### 2.2 `resolveComponent` {#resolve-component}
@@ -199,7 +199,7 @@ nuxtApp.vueApp.component(name, component)
 | `v-if` / `v-else`                      | 只有少数固定组件       | 同步、打进同一 chunk     | 最直观，但不适合大量或未知组件              |
 | `<component :is>` + 显式导入               | 组件已知、数量可控      | 同步                | 顶部导入较多，`#components` 需具名导入   |
 | `<component :is>` + `resolveComponent` | 按名字动态渲染        | 同步                | 参数必须是字符串字面量                  |
-| `Lazy` 前缀（异步组件）                        | 组件较多、关注首屏      | 各自独立 chunk、按需加载   | 作者推荐搭配使用                     |
+| `Lazy` 前缀（异步组件）                        | 组件较多、关注首屏      | 各自独立 chunk、按需加载   | 推荐搭配使用                     |
 | 全局组件（`.global` / `global/`）            | 多页面复用、CMS 未知组件 | 独立 chunk、**立即加载** | 省去 `resolveComponent`，但难分组优化 |
 
 落地步骤建议：
@@ -216,6 +216,6 @@ nuxtApp.vueApp.component(name, component)
 - **`#components` 用具名导入**：Nuxt 把组件以具名形式从 `#components` 导出，写成默认导入会拿不到。
 - **`resolveComponent` 只接受字符串字面量**：不能传变量或表达式，否则无法解析。
 - **同步 vs 异步是性能分水岭**：显式导入和 `resolveComponent` 默认同步，组件一多就拖累首屏；`Lazy` 前缀让它们各自独立 chunk 按需加载。
-- **全局组件会立即加载 chunk**：作者明确指出，全局组件虽方便，但其 chunk 在页面加载时就拉取，且各自独立、难以分组优化，是否使用要结合项目权衡。
+- **全局组件会立即加载 chunk**：全局组件虽方便，但其 chunk 在页面加载时就拉取，且各自独立、难以分组优化，是否使用要结合项目权衡。
 - **补充经验——别滥用全局注册**：全局组件会常驻应用实例，数量膨胀会拖慢启动并增加内存占用。除非确实跨页面高频复用或 CMS 场景，否则局部 + `Lazy` 通常是更可控的默认选择。
 - **补充经验——给动态组件加兜底**：CMS 返回的组件名可能不存在，建议在 `computed` 里对未知名称做降级处理（如渲染占位或 fallback 组件），避免线上出现空白。

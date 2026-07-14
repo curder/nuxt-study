@@ -4,7 +4,7 @@
 
 `runtimeConfig` 是 Nuxt 3 中用来向应用注入运行时配置（如 API 地址、密钥）的机制。它的价值在于遵循 [12-Factor App](https://12factor.net/) 的理念：**同一份构建产物（build artifact）可以在不同环境中通过环境变量切换配置**，而不需要为 dev / staging / prod 各自重新打包。
 
-但在实际项目、咨询和 code review 中，作者反复遇到同一个错误用法：开发者在 `nuxt.config.ts` 里把 `process.env.XXX` 直接写进 `runtimeConfig`，然后期望**部署后修改环境变量就能实时生效**。结果往往是构建时的值被「烤」进了产物里，运行时怎么改都没反应。
+但在实际项目、咨询和 code review 中，一个错误用法：开发者在 `nuxt.config.ts` 里把 `process.env.XXX` 直接写进 `runtimeConfig`，然后期望**部署后修改环境变量就能实时生效**。结果往往是构建时的值被「烤」进了产物里，运行时怎么改都没反应。
 
 这个坑的隐蔽之处在于：本地开发时它「看起来是工作的」，只有到了生产构建后才会暴露，因此非常值得提前理解清楚。
 

@@ -131,11 +131,11 @@ export default defineNuxtConfig({
 })
 ```
 
-几个关键点，作者都特别点了名：
+几个关键点，特别点了名：
 
-- **`useRuntimeConfig()` 在 server 路由里能用，是少数例外。** 作者之前反复强调「server 目录里不要用 Vue composable」，但 `useRuntimeConfig` 例外——因为它不只是 Vue composable，Nitro 自身也实现了一个同名函数。这里用的其实是 Nitro 版本，无需 import，名字只是「恰好一样」以对应相同用途。
+- **`useRuntimeConfig()` 在 server 路由里能用，是少数例外。** 「server 目录里不要用 Vue composable」，但 `useRuntimeConfig` 例外——因为它不只是 Vue composable，Nitro 自身也实现了一个同名函数。这里用的其实是 Nitro 版本，无需 import，名字只是「恰好一样」以对应相同用途。
 - **`proxyRequest` 来自 h3。** 它是 Nitro 底层框架 h3（原文口播 "A3/H3"）暴露的 helper，接收 `event` 和 `target` 两个参数，且被自动导入（auto-import），无需手写 import。h3 还提供 `proxyRequestHeaders` 等其他 helper，可在 h3 的 JS docs 里查到。
-- **`joinURL` 来自 `ufo`。** 它能优雅处理尾部斜杠拼接问题。虽然它随 Nitro 一起可用、不写进 `package.json` 也能 import，但作者建议还是把它显式加入依赖，做好依赖管理。
+- **`joinURL` 来自 `ufo`。** 它能优雅处理尾部斜杠拼接问题。虽然它随 Nitro 一起可用、不写进 `package.json` 也能 import，但建议还是把它显式加入依赖，做好依赖管理。
 
 这套方案客户端正常、`View Page Source` 确认 SSR 生效，而且构建后只要修改环境变量指向另一个 API / 服务器 / URL，代理立刻切换——三条标准**全部通过**。
 

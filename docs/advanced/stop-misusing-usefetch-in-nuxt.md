@@ -123,7 +123,7 @@ async function onSubmit() {
 - 你依然可以用 `onResponse`、设置 `method` 等选项，用法基本一致。
 - 实际上 `useFetch` 本身就是**包裹在 `$fetch` 之上的组合式函数**。
 
-改用 `$fetch` 后，作者演示：现在只有真正点击按钮或按回车时才发一次请求，输错密码只产生一次调用，打字不再触发任何请求。
+改用 `$fetch` 后，现在只有真正点击按钮或按回车时才发一次请求，输错密码只产生一次调用，打字不再触发任何请求。
 
 ## 使用 immediate + watch + execute 模式 {#use-immediate-watch-execute-mode}
 

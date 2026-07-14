@@ -95,7 +95,7 @@ export default defineNuxtPlugin(
 )
 ```
 
-标记为 `parallel: true` 的插件不会阻塞后续插件的启动，从而缩短应用冷启动时间。作者提到社区已有相关探索（如 Julien Huang 的 all-parallel 模块）尝试自动化这一过程，但手动标记是最可控的方式。
+标记为 `parallel: true` 的插件不会阻塞后续插件的启动，从而缩短应用冷启动时间。
 
 需要强调：**只有确实无依赖的插件才能设 `parallel: true`**。若插件 A 依赖 B 却被标记为并行，就可能出现「抢跑」。
 

@@ -70,7 +70,7 @@ export default defineWebSocketHandler({
 
 - **`peer`**：代表当前这个连接（对端），用它 `send()` 消息、或标识来源。
 - **`message`**：收到的消息对象，通过 `message.text()` 取出文本内容。
-- **广播**：作者演示了如何把收到的消息发送给所有连接（而不仅是回给发送者），借助 `peer.publish()` 与订阅频道机制，可实现聊天室式的群发。
+- **广播**：如何把收到的消息发送给所有连接（而不仅是回给发送者），借助 `peer.publish()` 与订阅频道机制，可实现聊天室式的群发。
 
 ## 客户端集成：连接与收发消息 {#client-side-integration-connect-and-send-receive-messages}
 

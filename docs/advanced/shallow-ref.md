@@ -69,7 +69,7 @@ triggerRef(state)
 
 ### 场景一：用 shallowRef 手写一个 Signals API {#signals-api-with-shallowref}
 
-Signals 是 React、Angular、Solid 目前都在推的响应式模型，各大框架作者也正在探讨标准化。Vue 中可以用 `shallowRef` 干净地实现出来：
+Signals 是 React、Angular、Solid 目前都在推的响应式模型，各大框架也正在探讨标准化。Vue 中可以用 `shallowRef` 干净地实现出来：
 
 ```js
 import { shallowRef, triggerRef } from 'vue'

@@ -57,7 +57,7 @@ export default defineEventHandler((event) => {
 - **public** 部分：客户端也能拿到（`runtimeConfig.public`）。
 - **private** 部分：只保留给安全上下文（secure context），即服务端——也就是 Nitro 那一侧，用来放密钥等敏感信息。
 
-那么中间交汇区（SSR）会发生什么？作者指出：**因为 SSR 跑在 Nitro 上下文里，此时服务端同时能访问 public 和 private 两部分**。
+那么中间交汇区（SSR）会发生什么？**因为 SSR 跑在 Nitro 上下文里，此时服务端同时能访问 public 和 private 两部分**。
 
 ```vue
 <script setup>
@@ -164,7 +164,7 @@ const store = useUserStore() // Pinia 在组件里没问题
 
 ### 4. 要读请求头等服务端上下文 —— 用 `useRequestEvent`，并判空 {#use-request-event-with-null-check}
 
-`useRequestEvent()` 能在 Nuxt 应用里拿到请求事件，**但仅在服务端渲染时有值**。作者演示的行为差异很关键：
+`useRequestEvent()` 能在 Nuxt 应用里拿到请求事件，**但仅在服务端渲染时有值**。
 
 - 从 page A **客户端导航**到 page B，B 里调用 → 返回 `undefined`（没有服务端请求发生）
 - 在 page B **硬刷新（hard reload）**，触发 SSR → 能拿到真实 event
@@ -179,7 +179,7 @@ const lang = event ? getRequestHeader(event, 'accept-language') : undefined
 
 ### 5. 把数据库查询隔离出组件 —— 用 server components（仍经 Nitro） {#isolate-db-query-with-server-components}
 
-作者提到，如今可以用 **server components**（服务端组件，文件名以 `.server.vue` 结尾）把数据库代码（如查 MongoDB、SQL）从普通组件里剥离出去。但要记住：**即便是 server component，它也是通过 Nitro 路由被服务端渲染的**，本质仍是「两者协作」。
+如今可以用 **server components**（服务端组件，文件名以 `.server.vue` 结尾）把数据库代码（如查 MongoDB、SQL）从普通组件里剥离出去。但要记住：**即便是 server component，它也是通过 Nitro 路由被服务端渲染的**，本质仍是「两者协作」。
 
 ```
 components/
@@ -190,7 +190,7 @@ components/
 
 ### 6. 想脱离 Nuxt 单用服务端能力 —— Nitro 可独立使用 {#standalone-nitro}
 
-作者指出 Nitro 是**完全独立（standalone）**的包，可以脱离 Nuxt 直接用它替代 Koa、Fastify、Express 等 HTTP 框架，从零搭建一个基于 TypeScript 的现代服务端。底层依赖链是 `Nuxt → Nitro → h3`。
+Nitro 是**完全独立（standalone）**的包，可以脱离 Nuxt 直接用它替代 Koa、Fastify、Express 等 HTTP 框架，从零搭建一个基于 TypeScript 的现代服务端。底层依赖链是 `Nuxt → Nitro → h3`。
 
 **判断口诀**：只需要一个纯后端 / API 服务、用不上 Vue → 直接上 Nitro，不必背上整个 Nuxt。
 
