@@ -84,6 +84,7 @@ export default defineConfig({
                         { text: "Vue 与 Nuxt 中的动态组件", link: "/advanced/dynamic-components-in-vue-and-nuxt" },
                         { text: "用 Nuxt 构建纯客户端 SPA", link: "/advanced/build-plain-spa-with-nuxt" },
                         { text: "Options API 与 Composition API 的选择", link: "/advanced/vue-options-api-vs-composition-api" },
+                        { text: "动态渲染（Dynamic Rendering）", link: "/advanced/dynamic-rendering-ssr-only-for-crawlers-nuxt" },
                     ]
                 },
             ]
