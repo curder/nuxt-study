@@ -78,7 +78,8 @@ export default defineConfig({
                         { text: "在Nuxt和Nitro中集成WebSockets", link: "/advanced/integrating-websockets-in-nuxt-and-nitro" },
                         { text: "用构建缓存加速 Nuxt 打包", link: "/advanced/faster-nuxt-builds-with-build-cache" },
                         { text: "Nuxt 测试入门", link: "/advanced/nuxt-test-utils-primer" },
-                        { text: "Nuxt 路径别名", link: "/advanced/nuxt-aliases-guide" }
+                        { text: "Nuxt 路径别名", link: "/advanced/nuxt-aliases-guide" },
+                        { text: "异步 Composition API 的上下文丢失与四种解法", link: "/advanced/nuxt-instance-unavailable-async-composition-api" },
                     ]
                 },
             ]
