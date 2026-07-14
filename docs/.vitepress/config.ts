@@ -80,6 +80,7 @@ export default defineConfig({
                         { text: "Nuxt 测试入门", link: "/advanced/nuxt-test-utils-primer" },
                         { text: "Nuxt 路径别名", link: "/advanced/nuxt-aliases-guide" },
                         { text: "异步 Composition API 的上下文丢失与四种解法", link: "/advanced/nuxt-instance-unavailable-async-composition-api" },
+                        { text: "使用 unstorage 统一管理文件与 K/V", link: "/advanced/nuxt-nitro-unstorage-storage" },
                     ]
                 },
             ]
