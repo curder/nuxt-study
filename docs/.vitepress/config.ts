@@ -83,6 +83,7 @@ export default defineConfig({
                         { text: "使用 unstorage 统一管理文件与 K/V", link: "/advanced/nuxt-nitro-unstorage-storage" },
                         { text: "Vue 与 Nuxt 中的动态组件", link: "/advanced/dynamic-components-in-vue-and-nuxt" },
                         { text: "用 Nuxt 构建纯客户端 SPA", link: "/advanced/build-plain-spa-with-nuxt" },
+                        { text: "Options API 与 Composition API 的选择", link: "/advanced/vue-options-api-vs-composition-api" },
                     ]
                 },
             ]
