@@ -82,6 +82,7 @@ export default defineConfig({
                         { text: "异步 Composition API 的上下文丢失与四种解法", link: "/advanced/nuxt-instance-unavailable-async-composition-api" },
                         { text: "使用 unstorage 统一管理文件与 K/V", link: "/advanced/nuxt-nitro-unstorage-storage" },
                         { text: "Vue 与 Nuxt 中的动态组件", link: "/advanced/dynamic-components-in-vue-and-nuxt" },
+                        { text: "用 Nuxt 构建纯客户端 SPA", link: "/advanced/build-plain-spa-with-nuxt" },
                     ]
                 },
             ]
