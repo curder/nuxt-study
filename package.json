@@ -15,5 +15,6 @@
   },
   "devDependencies": {
     "vitepress": "^2.0.0-alpha.17"
-  }
+  },
+  "packageManager": "yarn@4.17.1"
 }
