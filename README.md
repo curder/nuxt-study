@@ -1,28 +1,34 @@
 # Nuxt 学习
 
-[![Build Status](https://github.com/curder/nuxt-study/actions/workflows/deploy.yml/badge.svg)](https://github.com/curder/nuxt-study/actions?query=deploy%3Amaster)
+[![Build](https://github.com/curder/nuxt-study/actions/workflows/deploy.yml/badge.svg)](https://github.com/curder/nuxt-study/actions?query=deploy%3Amaster)
+![node](https://img.shields.io/badge/node-%3E%3D24.0-brightgreen)
+![yarn](https://img.shields.io/badge/yarn-4.17.1-brightgreen)
+![license](https://img.shields.io/badge/license-MIT-brightgreen)
 
-1. 通过访问地址：[github.io](https://curder.github.io/nuxt-study/) 直接阅读。
+Nuxt.js 学习笔记，使用 Vitepress 构建文档站点。
 
-2. 本地下载
+## 在线阅读
 
-   - `node v24.14.1`
-   - `vitepress 2.0.0-alpha.17`
+<https://curder.github.io/nuxt-study/>
 
-GitHub 仓库地址：[curder/nuxt-study](https://www.github.com/curder/nuxt-study)
+## 本地运行
 
-下载源代码到本地并执行相关命令启动本地阅览。
+### 环境要求
+
+- Node.js >= 24.0
+- Yarn 4.17.1
+
+### 启动
 
 ```shell
-# 1. 下载源代码
-git clone git@github.com:curder/nuxt-study.git && cd nuxt-study
-
-# 2. 下载依赖
+git clone git@github.com:curder/nuxt-study.git
+cd nuxt-study
 yarn
-
-# 3. 编译
-## 开发
 yarn docs:dev
-## 发布
+```
+
+### 构建
+
+```shell
 yarn docs:build
 ```
