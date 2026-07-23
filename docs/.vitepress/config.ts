@@ -91,6 +91,7 @@ export default defineConfig({
                         { text: "Nuxt 3 中实现重定向", link: "/advanced/nuxt3-redirects-route-rules-middleware" },
                         { text: "Nuxt Scripts 加载第三方资源", link: "/advanced/loading-third-party-assets-with-nuxt-scripts" },
                         { text: "Nuxt 4 的 `shared/` 目录", link: "/advanced/nuxt-4-shared-directory" },
+                        { text: "Vue 与 Nuxt 中的自动导入", link: "/advanced/vue-nuxt-auto-imports-good-and-bad" },
                     ]
                 },
             ]
