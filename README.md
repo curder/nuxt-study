@@ -5,7 +5,7 @@
 ![yarn](https://img.shields.io/badge/yarn-4.17.1-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-brightgreen)
 
-Nuxt.js 学习笔记，使用 Vitepress 构建文档站点。
+[Nuxt.js](https://nuxt.com/) 学习笔记，使用 [VitePress](https://vitepress.dev/) 构建文档站点。
 
 ## 在线阅读
 
