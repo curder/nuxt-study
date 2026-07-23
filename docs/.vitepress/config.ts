@@ -86,6 +86,7 @@ export default defineConfig({
                         { text: "Options API 与 Composition API 的选择", link: "/advanced/vue-options-api-vs-composition-api" },
                         { text: "动态渲染（Dynamic Rendering）", link: "/advanced/dynamic-rendering-ssr-only-for-crawlers-nuxt" },
                         { text: "Nuxt 4 全新目录结构", link: "/advanced/nuxt-4-new-folder-structure" },
+                        { text: "Nuxt 与 Nitro 的兼容性日期", link: "/advanced/nuxt-nitro-compatibility-date-explained" },
                     ]
                 },
             ]
