@@ -8,7 +8,7 @@ Nuxt 的 `useState` 如何把服务端状态安全传给客户端、消除 hydra
 
 **第二个坑：服务端全局状态的请求隔离。** 服务器是长驻进程，模块顶层的变量会被多个用户请求共享。一旦把用户信息、购物车、权限之类的数据放进这种变量，就会发生跨用户的数据污染。
 
-Nuxt 的 `useState` 一次解决这两件事：把服务端生成的状态写入 payload 传给客户端、通过唯一 key 在组件间共享响应式状态、并在 SSR 中按请求隔离状态——而且对于简单场景，不需要额外引入 Pinia 等依赖。
+Nuxt 的 `useState` 一次解决这两件事：把服务端生成的状态写入 payload 传给客户端、通过唯一 key 在组件间共享响应式状态、并在 SSR 中按请求隔离状态，而且对于简单场景，不需要额外引入 Pinia 等依赖。
 
 ## Demo：随机值为什么会引发 Hydration 错误 {#demo-random-value-hydration-error}
 
@@ -28,7 +28,7 @@ const randomValue = ref(Math.random())
 
 由于 `Math.random()` 每次结果都不同，服务端可能渲染出 `0.317`，客户端却期望 `0.842`，两边对不上，报错随之出现。
 
-问题的本质不是 `ref` 没有响应式，而是**它不会把服务端算出的值传给客户端**——客户端会重新执行初始化表达式，自然可能得到另一个值。
+问题的本质不是 `ref` 没有响应式，而是**它不会把服务端算出的值传给客户端** 客户端会重新执行初始化表达式，自然可能得到另一个值。
 
 ## 用 useState 修复 Hydration 错误 {#use-state-fix-hydration-error}
 
@@ -154,7 +154,7 @@ export function useCounter() {
 }
 ```
 
-它避免了模块级单例，但**根本不是全局状态**——每次调用都得到独立的 `ref`：
+它避免了模块级单例，但**根本不是全局状态**，每次调用都得到独立的 `ref`：
 
 ```ts
 const first = useCounter()
@@ -223,7 +223,7 @@ const cart = useState('cart:items', () => [])
 const notifications = useState('notifications:items', () => [])
 ```
 
-工厂函数应只返回初始值，而不承担复杂副作用。如需异步获取 SSR 数据，用 `useFetch` 或 `useAsyncData`，再把必要结果写入状态——不要把 `useState` 当异步取数工具。
+工厂函数应只返回初始值，而不承担复杂副作用。如需异步获取 SSR 数据，用 `useFetch` 或 `useAsyncData`，再把必要结果写入状态，不要把 `useState` 当异步取数工具。
 
 ## useState 并不总是要被 Pinia 取代 {#use-state-not-always-replaced-by-pinia}
 

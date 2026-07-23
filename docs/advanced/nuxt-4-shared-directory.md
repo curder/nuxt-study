@@ -29,7 +29,7 @@ export { capitalize }
 
 虽然能跑，但本质上还是把 server 和 client 两个上下文搅在了一起，既不优雅也不清晰。
 
-Nuxt 4 引入的 `shared/` 目录，正是为了终结这种尴尬——它给 contextless 的代码一个"名正言顺的家"。
+Nuxt 4 引入的 `shared/` 目录，正是为了终结这种尴尬，它给 contextless 的代码一个"名正言顺的家"。
 
 ## 为什么需要单独的 `shared/` 目录 {#why-need-shared-directory}
 
@@ -155,7 +155,7 @@ export default defineNuxtConfig({
 export type MyType = Record<string, 'test' | '10K' | 'subscribers' | 'yay'>
 ```
 
-然后在 `app/app.vue` 和 `server/api/` 下都能直接使用 `MyType`，无需 import 语句——IDE 跳转也能正确指向 `shared/types/index.ts`。
+然后在 `app/app.vue` 和 `server/api/` 下都能直接使用 `MyType`，无需 import 语句，IDE 跳转也能正确指向 `shared/types/index.ts`。
 
 服务端使用示例：
 

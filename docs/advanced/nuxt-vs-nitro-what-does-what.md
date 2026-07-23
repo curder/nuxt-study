@@ -162,7 +162,7 @@ const store = useUserStore() // Pinia 在组件里没问题
 
 **判断口诀**：想用 `useXxx()` → 它必须待在组件 / `app.vue` / 插件等 Nuxt 上下文里，而不是 `server/` 路由里。
 
-### 4. 要读请求头等服务端上下文 —— 用 `useRequestEvent`，并判空 {#use-request-event-with-null-check}
+### 4. 要读请求头等服务端上下文，用 `useRequestEvent`，并判空 {#use-request-event-with-null-check}
 
 `useRequestEvent()` 能在 Nuxt 应用里拿到请求事件，**但仅在服务端渲染时有值**。
 
@@ -177,7 +177,7 @@ const lang = event ? getRequestHeader(event, 'accept-language') : undefined
 
 **判断口诀**：需要 headers / cookie / 真实请求路径 → 只能在 SSR 阶段拿，写代码时默认它在客户端会是 `undefined`。
 
-### 5. 把数据库查询隔离出组件 —— 用 server components（仍经 Nitro） {#isolate-db-query-with-server-components}
+### 5. 把数据库查询隔离出组件，用 server components（仍经 Nitro） {#isolate-db-query-with-server-components}
 
 如今可以用 **server components**（服务端组件，文件名以 `.server.vue` 结尾）把数据库代码（如查 MongoDB、SQL）从普通组件里剥离出去。但要记住：**即便是 server component，它也是通过 Nitro 路由被服务端渲染的**，本质仍是「两者协作」。
 
@@ -188,7 +188,7 @@ components/
 
 **判断口诀**：不想让数据库代码进客户端 bundle → 用 `.server.vue`，但心里清楚它跑在 Nitro 里，别在其中期待客户端交互逻辑。
 
-### 6. 想脱离 Nuxt 单用服务端能力 —— Nitro 可独立使用 {#standalone-nitro}
+### 6. 想脱离 Nuxt 单用服务端能力，Nitro 可独立使用 {#standalone-nitro}
 
 Nitro 是**完全独立（standalone）**的包，可以脱离 Nuxt 直接用它替代 Koa、Fastify、Express 等 HTTP 框架，从零搭建一个基于 TypeScript 的现代服务端。底层依赖链是 `Nuxt → Nitro → h3`。
 

@@ -13,13 +13,13 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 单个插件时这完全没问题。
 
-但一旦插件之间出现**依赖关系**——比如 `auth` 插件要用到 `api` 插件注入的 `$api`——隐患就来了：**Nuxt 默认按 `plugins/` 目录下的文件名字符串顺序执行插件。**
+但一旦插件之间出现**依赖关系**—比如 `auth` 插件要用到 `api` 插件注入的 `$api`，隐患就来了：**Nuxt 默认按 `plugins/` 目录下的文件名字符串顺序执行插件。**
 
 如果文件命名的字母序恰好让 `auth.ts` 排在 `api.ts` 前面，`auth` 执行时 `$api` 还不存在，应用就会崩溃，抛出类似 `Cannot read properties of undefined` 的错误。
 
 靠给文件加数字前缀（`01.api.ts`、`02.auth.ts`）来「掰」顺序既脆弱又难维护：任何人重命名文件或新增插件都可能悄悄打乱依赖链。
 
-**对象语法（Object Syntax）** 正是为解决这个痛点而生——顺带还带来了并行加载等性能红利。
+**对象语法（Object Syntax）** 正是为解决这个痛点而生，顺带还带来了并行加载等性能红利。
 
 ## 从函数式到对象式 {#object-syntax}
 
@@ -40,7 +40,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 ### 对象语法：用 name + dependsOn 显式声明依赖 {#explicit-dependency-declaration}
 
-`defineNuxtPlugin` 支持接收第二个参数——一个配置对象。这正是治理依赖的关键。
+`defineNuxtPlugin` 支持接收一个配置对象。这正是治理依赖的关键。
 
 被依赖的插件先起个名字：
 

@@ -8,7 +8,7 @@
 
 当某个平台（比如 Cloudflare、Netlify）改变了行为或引入了破坏性变更（breaking change），Nitro 的 preset 也必须跟着适配。
 
-如果仅靠 SemVer，一个你不用的平台发生变更，就会迫使整个框架发一个 major 版本，所有用户都得跟着升级——这显然不合理。
+如果仅靠 SemVer，一个你不用的平台发生变更，就会迫使整个框架发一个 major 版本，所有用户都得跟着升级，这显然不合理。
 
 兼容性日期就是为了解决这个问题而引入的：它让你能在框架版本不变的前提下，独立控制"何时开始采用某个平台的新行为"。
 
@@ -35,7 +35,7 @@ Nitro 内置了大量部署预设，每个预设对应一个部署平台。
 - 或者维护者需要把所有修复向后移植（backport）到旧版本，工作量巨大
 
 这跟 `nuxt/image` 的图片服务商（image providers）、`unstorage` 的存储驱动（drivers）、`nuxt/fonts`
-的字体源是同一个道理——它们都有大量外部依赖，行为可能随时变化。
+的字体源是同一个道理，它们都有大量外部依赖，行为可能随时变化。
 
 compatibilityDate 的设计目标就是让这些"无法用 SemVer 单独管理的东西"也能被独立版本化。
 
@@ -88,8 +88,9 @@ export default defineNuxtConfig({
 })
 ```
 
-这种按平台粒度控制的方式尤其适用于 `nuxt/image`、`nuxt/fonts` 等模块——比如 Cloudflare 的图片服务可以用最新日期，而
-Cloudflare Workers 的 breaking change 你想暂时观望，就保持一个更早的日期。
+这种按平台粒度控制的方式尤其适用于 `nuxt/image`、`nuxt/fonts` 等模块。
+
+比如 Cloudflare 的图片服务可以用最新日期，而 Cloudflare Workers 的 breaking change 你想暂时观望，就保持一个更早的日期。
 
 > 在纯 Nitro 项目中，配置写在 `nitro.config.ts` 中，字段名同样是 `compatibilityDate`，格式要求 `YYYY-MM-DD`。
 >

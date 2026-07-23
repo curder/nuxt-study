@@ -4,7 +4,7 @@ Vue 3.4 中被低估的 SSR 改进：hydration 不匹配错误现在会精确定
 
 Vue 3.4 发布时，大家的目光都集中在稳定版 `defineModel` 宏、快两倍的单文件组件（SFC）解析器、更高效的响应式系统，以及 `v-bind` 简写上。
 
-但有一个和服务端渲染（SSR）密切相关的改进几乎无人提及——**hydration（水合）错误的可调试性大幅提升**。
+但有一个和服务端渲染（SSR）密切相关的改进几乎无人提及 **hydration（水合）错误的可调试性大幅提升**。
 
 对于纯单页应用（SPA）来说这不是问题，但只要你用了 SSR，就绕不开 hydration。而那句臭名昭著的报错：
 
@@ -12,7 +12,7 @@ Vue 3.4 发布时，大家的目光都集中在稳定版 `defineModel` 宏、快
 Hydration completed but contains mismatches
 ```
 
-在过去几乎等于「大海捞针」——它只告诉你出了不匹配，却不告诉你是哪个组件、哪个元素。
+在过去几乎等于「大海捞针」它只告诉你出了不匹配，却不告诉你是哪个组件、哪个元素。
 
 ## 什么是 Hydration，以及不匹配从何而来 {#what-is-hydration-and-where-does-mismatch-come-from}
 
@@ -67,7 +67,7 @@ Hydration completed but contains mismatches
 
 由于生成的是随机值（randomness），服务端算出的链接（比如以 `zk8ray` 开头）和客户端重新算出的（比如以 `d1tg` 开头）必然不同。
 
-页面加载瞬间会有一次「信息闪烁（flash）」——正是服务端 HTML 被客户端的不同结果替换所致，控制台随即抛出那句 mismatch 报错。
+页面加载瞬间会有一次「信息闪烁（flash）」正是服务端 HTML 被客户端的不同结果替换所致，控制台随即抛出那句 mismatch 报错。
 
 > 这类问题在 Vue 2 里同样存在，根源类似于 `created` 钩子中执行不可预测逻辑。
 > 
@@ -265,7 +265,7 @@ if (import.meta.client) {
 
 ## Vue 3.3 vs 3.4：报错信息对比 {#vue-3-3-vs-3-4-error-message-difference}
 
-在 **Vue 3.3** 下，只能看到那句笼统的 `Hydration completed but contains mismatches`——在一个几百个组件的大型应用里，这几乎无法定位。
+在 **Vue 3.3** 下，只能看到那句笼统的 `Hydration completed but contains mismatches`，在一个几百个组件的大型应用里，这几乎无法定位。
 
 升级到 **Vue 3.4** 后，同样的代码给出的信息丰富得多：
 
@@ -292,7 +292,7 @@ hydration 错误最棘手之处在于：它们常常**只在生产环境出现**
 
 而过去**没有办法在生产环境启用**这些 hydration 警告。
 
-Vue 3.4 通过一个**编译期标志（compile-time flag）**解决了这一点，而在 Nuxt 中更简单——只需在 `nuxt.config` 里把 `debug` 设为 `true`：
+Vue 3.4 通过一个**编译期标志（compile-time flag）**解决了这一点，而在 Nuxt 中更简单，只需在 `nuxt.config` 里把 `debug` 设为 `true`：
 
 ```ts
 // nuxt.config.ts
@@ -321,7 +321,7 @@ ID 两端对不上，自然触发 hydration 不匹配。
 - 但更理想的是由 **Vue 本身**提供，这样库作者无需分别适配 Nuxt、`vite-ssr-plugin` 等各种 SSR 方案。
 - Nuxt 团队的 Daniel Roe 还给出过基于 `v-bind` + `useHydration` 的过渡替代方案，可在两端工作。
 
-这意味着一个能服务整个生态的统一方案即将到来——不仅库作者受益，任何需要稳定唯一 ID 的实现都能用上。
+这意味着一个能服务整个生态的统一方案即将到来，不仅库作者受益，任何需要稳定唯一 ID 的实现都能用上。
 
 ## 常见案例：排查与规避 hydration 不匹配 {#common-cases-troubleshooting-and-avoiding-hydration-mismatch}
 

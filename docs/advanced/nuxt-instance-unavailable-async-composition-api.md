@@ -4,7 +4,7 @@
 
 它通常伴随一个指向官方文档的链接，但链接背后的机制往往被一带而过。
 
-这个错误到底意味着什么？为什么偏偏在异步代码里出现？以及——有哪几种修复方式，哪一种最值得用。
+这个错误到底意味着什么？为什么偏偏在异步代码里出现？以及有哪几种修复方式，哪一种最值得用。
 
 核心结论一句话：**问题出在 `await` 之后**。当在一个 composable 或 `setup` 里 `await` 了某个异步操作，之后再去调用依赖 Nuxt 上下文的 composable（如 `useRuntimeConfig`、`useState` 等），Nuxt 就可能已经「找不到」当前实例了，于是抛出该错误。
 
@@ -33,7 +33,7 @@ async function useSomething() {
 
 - Vue（以及 Nuxt）依赖一个**同步可访问的「当前实例」上下文**。在 `setup` 同步执行期间，Vue 会把「当前活跃的实例」设为全局可取；composable 内部正是靠读取这个全局状态来拿到实例。
 - 但 **`await` 会打断同步执行**。一旦遇到 `await`，函数让出执行权，微任务队列里的其他代码开始运行，Vue 早已把「当前实例」这个全局指针**清空或切走**了。
-- 因此 `await` **之后**再调用依赖上下文的 composable，就取不到实例——于是报 "Nuxt instance unavailable"。
+- 因此 `await` **之后**再调用依赖上下文的 composable，就取不到实例，于是报 "Nuxt instance unavailable"。
 
 一句话概括：**上下文只在第一个 `await` 之前是可靠的**，异步边界之后就丢了。
 
@@ -43,7 +43,7 @@ async function useSomething() {
 
 ### 1、将异步操作放到最后 {#nuxt-instance-unavailable-async-composition-api-solution-1}
 
-最简单直接的做法——**先把所有依赖上下文的 composable 调用完，再做 `await`**。
+最简单直接的做法，**先把所有依赖上下文的 composable 调用完，再做 `await`**。
 
 ```ts
 // ✅ 上下文相关调用在前，await 在后
@@ -97,7 +97,7 @@ async function useSomething() {
 
 ### 4. `asyncContext`（实验性）{#nuxt-instance-unavailable-async-composition-api-solution-4}
 
-最后是治本的方向——开启实验性的 `asyncContext`。它借助底层的 [unctx](https://github.com/unjs/unctx) 与 JavaScript 的 Async Context 提案能力，让上下文**能够跨越 `await` 边界自动保持**：
+最后是治本的方向，开启实验性的 `asyncContext`。它借助底层的 [unctx](https://github.com/unjs/unctx) 与 JavaScript 的 Async Context 提案能力，让上下文**能够跨越 `await` 边界自动保持**：
 
 ```ts
 // nuxt.config.ts
@@ -114,10 +114,10 @@ export default defineNuxtConfig({
 
 ## 四、如何选择 {#nuxt-instance-unavailable-async-composition-api-solution-choice}
 
-- **能调整顺序就调整**（方案 1）——首选，零依赖零配置。
-- **数据获取场景**（方案 2）——用 `useAsyncData` 顺理成章。
-- **顺序无法调整时**（方案 3）——用 `runWithContext` 显式接回上下文。
-- **想从根上解决**（方案 4）——开启 `asyncContext`，但留意其实验状态。
+- **能调整顺序就调整**（方案 1）首选，零依赖零配置。
+- **数据获取场景**（方案 2）用 `useAsyncData` 顺理成章。
+- **顺序无法调整时**（方案 3）用 `runWithContext` 显式接回上下文。
+- **想从根上解决**（方案 4）开启 `asyncContext`，但留意其实验状态。
 
 ## 常见案例 {#nuxt-instance-unavailable-async-composition-api-solution-cases}
 
@@ -130,16 +130,16 @@ export default defineNuxtConfig({
 
 ## 注意事项 {#nuxt-instance-unavailable-async-composition-api-solution-notes}
 
-| 事项                       | 说明                                                   |
-|--------------------------|------------------------------------------------------|
-| **根因是异步边界**              | `await` 会打断同步执行，Vue/Nuxt 的「当前实例」上下文随之丢失。             |
-| **上下文只在首个 `await` 前可靠**  | 异步操作之后再取上下文就可能失败。                                    |
-| **方案 1 最省心**             | 「上下文调用在前、异步在后」是成本最低的日常写法。                            |
-| **runWithContext 要先拿实例** | 必须在 `await` 之前 `useNuxtApp()`，之后才能 `runWithContext`。 |
-| **asyncContext 是实验特性**   | 依赖 unctx 与 Async Context 能力，生产使用需谨慎评估。               |
-| **不止 Nuxt**              | 这本质是 Vue Composition API 的通用问题，纯 Vue 里也有类似上下文规则。     |
+| 事项                              | 说明                                                                   |
+|-----------------------------------|------------------------------------------------------------------------|
+| **根因是异步边界**                | `await` 会打断同步执行，Vue/Nuxt 的「当前实例」上下文随之丢失。        |
+| **上下文只在首个 `await` 前可靠** | 异步操作之后再取上下文就可能失败。                                     |
+| **方案 1 最省心**                 | 「上下文调用在前、异步在后」是成本最低的日常写法。                     |
+| **runWithContext 要先拿实例**     | 必须在 `await` 之前 `useNuxtApp()`，之后才能 `runWithContext`。        |
+| **asyncContext 是实验特性**       | 依赖 unctx 与 Async Context 能力，生产使用需谨慎评估。                 |
+| **不止 Nuxt**                     | 这本质是 Vue Composition API 的通用问题，纯 Vue 里也有类似上下文规则。 |
 
-这一「上下文只在同步阶段有效」的规则同样适用于 Vue 的 `inject`、`getCurrentInstance`、生命周期钩子注册（如 `onMounted`）——它们都必须在 `setup` 的同步阶段调用，不能放到 `await` 之后。
+这一「上下文只在同步阶段有效」的规则同样适用于 Vue 的 `inject`、`getCurrentInstance`、生命周期钩子注册（如 `onMounted`），它们都必须在 `setup` 的同步阶段调用，不能放到 `await` 之后。
 
 因此把「同步注册、异步收尾」当作编写 composable 的默认心智模型，能一并规避这一整类问题。
 

@@ -27,7 +27,9 @@
 
 判断依据通常是请求头里的 **User-Agent**：服务器维护一份爬虫标识清单，命中则走 SSR/预渲染管线，否则原样返回 SPA。
 
-在传统实现里，这一步往往交给一个中间层来做，例如 Google 开源的 **[Rendertron](https://github.com/GoogleChrome/rendertron)**——它本质上是一个无头浏览器（Headless Chrome）服务，把 SPA 跑一遍、截取渲染后的 HTML 再回传给爬虫。
+在传统实现里，这一步往往交给一个中间层来做，例如 Google 开源的 **[Rendertron](https://github.com/GoogleChrome/rendertron)**。
+
+它本质上是一个无头浏览器（Headless Chrome）服务，把 SPA 跑一遍、截取渲染后的 HTML 再回传给爬虫。
 
 ## 二、为什么有人用动态渲染 {#dynamic-rendering-why}
 
@@ -47,7 +49,7 @@
 - **两套输出容易漂移**：用户看到的 HTML 和爬虫看到的 HTML 是两条链路，长期演进后极易不一致，导致「排名内容 ≠ 真实内容」。
 - **首屏体验没改善**：真实用户依旧是空壳 + 等 JS，动态渲染完全没解决普通访客的首屏与性能问题。
 - **调试困难**：出问题时要模拟特定 User-Agent 才能复现爬虫看到的版本。
-- **现代搜索引擎已能执行 JS**：Googlebot 早已基于较新的 Chromium 渲染页面，很多场景下 SPA 直接就能被抓到内容——动态渲染的必要性大幅下降。
+- **现代搜索引擎已能执行 JS**：Googlebot 早已基于较新的 Chromium 渲染页面，很多场景下 SPA 直接就能被抓到内容，动态渲染的必要性大幅下降。
 
 > 补充：即便如此，社交抓取器、部分小众搜索引擎仍可能不跑 JS，这类边缘需求才是动态渲染残存的价值点。
 
@@ -58,7 +60,7 @@
 区别在于**内容是否一致**：
 
 - ✅ 合规：爬虫和用户拿到的是**同样的内容**，只是渲染方式不同（一个预渲染、一个客户端渲染）。这正是动态渲染被允许的边界。
-- ❌ 违规：借机给爬虫塞关键词、给用户看另一套页面——这就是 Cloaking。
+- ❌ 违规：借机给爬虫塞关键词、给用户看另一套页面，这就是 Cloaking。
 
 动态渲染本身不等于作弊，但它「天然把你放在了危险的边缘」，一旦两套输出失控就可能被判定为伪装。
 
@@ -99,7 +101,7 @@ export default defineEventHandler((event) => {
 
 几个要点：
 
-- `getHeader(event, 'user-agent')` 来自 Nitro/h3 的工具函数，用于读取请求头（视频评论区就有人专门问这个 `getHeader` 从哪来——它是服务端自动可用的辅助方法）。
+- `getHeader(event, 'user-agent')` 来自 Nitro/h3 的工具函数，用于读取请求头（视频评论区就有人专门问这个 `getHeader` 从哪来，它是服务端自动可用的辅助方法）。
 - `event.context.nuxt.noSSR = true` 是关键开关：命中时 Nuxt 对这次请求跳过服务端渲染，直接返回 SPA 空壳。
 - 有观众补充：第 14 行的 `event.context.nuxt = event.context.nuxt || {}` 可以用较新的空值合并赋值运算符简写：
 

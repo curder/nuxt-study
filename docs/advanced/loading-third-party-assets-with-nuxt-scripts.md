@@ -91,7 +91,7 @@ declare global {
 
 这样 `window.run` 就有了完整类型。
 
-这也是 Nuxt Scripts 的一个重要收益——即便是任意自定义脚本，也能获得端到端的类型安全。
+这也是 Nuxt Scripts 的一个重要收益，即便是任意自定义脚本，也能获得端到端的类型安全。
 
 如果脚本本身是 npm 包，还可以直接随包提供类型，接入更省事。
 
@@ -147,7 +147,7 @@ const showWidget = async () => {
 
 逻辑要点：
 
-- 当 `status.value` 为 `awaiting load` 时，说明脚本还没加载，此时直接调用 `displayWidget()` 不会有任何效果——因为 `window.run` 还不存在；必须先 `await load()`。
+- 当 `status.value` 为 `awaiting load` 时，说明脚本还没加载，此时直接调用 `displayWidget()` 不会有任何效果，因为 `window.run` 还不存在；必须先 `await load()`。
 - 一旦脚本加载完成，`status` 就不再是 `awaiting load`，之后每次点击都只是再次执行 `run`，不会重复下载脚本。
 - 把按钮文案做成条件显示更友好：未加载时显示「Show widget」，已加载后显示「Show widget (again)」。
 
@@ -173,7 +173,7 @@ const showWidget = async () => {
 
 ## 注意事项 {#notes}
 
-- `use` 映射出的函数在脚本未加载时调用是无意义的，必须结合 `status` 或 `load` 处理「先加载再执行」的顺序；视频演示中正是踩了这个坑——未 hover 直接点按钮时没有任何反应。
+- `use` 映射出的函数在脚本未加载时调用是无意义的，必须结合 `status` 或 `load` 处理「先加载再执行」的顺序；视频演示中正是踩了这个坑，未 hover 直接点按钮时没有任何反应。
 - Facade 组件（YouTube、Google Maps 等）本质上是用静态预览代替真实 iframe，点击后才真正加载，是降低 TBT 的利器。
 - 若所需脚本不在注册表中，可以提 issue 请求收录；私有/公司内部脚本则走自定义脚本路径。
 - 脚本函数命名不限于 `run`，可以有多个函数，`use` 里一并映射即可，类型同样能推断。

@@ -39,7 +39,7 @@ console.log(nuxt.payload)
 
 Nuxt 2 里其实早就存在类似能力，叫 `window.$nuxt`（也就是 `$nuxt`）。作用几乎一致：暴露 Nuxt 实例，方便调试，同时也是页面过渡（transition）实现所必需的挂载点。
 
-当年社区就出现过一个经典 issue：[nuxt/nuxt#4720](https://github.com/nuxt/nuxt/issues/4720)——"如何保护 `$nuxt` 不被控制台访问？"当时给出的方案是通过 `globalName` 把它改成一个"秘密名字"。但这条路走到最后其实是 **security through obscurity（靠隐蔽性求安全）**，并不是有效的安全模型。
+当年社区就出现过一个经典 issue：[nuxt/nuxt#4720](https://github.com/nuxt/nuxt/issues/4720)，"如何保护 `$nuxt` 不被控制台访问？"当时给出的方案是通过 `globalName` 把它改成一个"秘密名字"。但这条路走到最后其实是 **security through obscurity（靠隐蔽性求安全）**，并不是有效的安全模型。
 
 ## `window.useNuxtApp()` 是安全风险吗？ {#is-window-useNuxtApp-a-security-risk}
 
@@ -99,14 +99,14 @@ export default defineNuxtConfig({
 3. 用 `nuxt.$config` 检查公开运行时配置是否正确（尤其部署后）。
 4. 用 `nuxt.payload` 查看 SSR 数据是否与预期一致。
 5. 复现 Bug 时，通过 `nuxt.$<pluginName>` 直接调用插件方法，省去改代码重新构建。
-6. 排查完毕后无需清理——它就是设计给你用的调试通道。
+6. 排查完毕后无需清理，它就是设计给你用的调试通道。
 
 ## 常见坑与注意事项 {##common-pitfalls-and-notes}
 
 - **只在客户端可用**：`window.useNuxtApp` 顾名思义挂在 `window` 上，SSR 阶段没有 `window`；在组件代码里请继续用组合式的 `useNuxtApp()`。
 - **不要把它当成 API**：它是调试用途，不建议在业务代码里通过 `window.useNuxtApp()` 访问 Nuxt 实例，会破坏 SSR 兼容与类型推断。
 - **`runtimeConfig` 的 public/private 边界**：`$config` 在客户端能看到 **只是 `public` 部分**。但如果开发者错把密钥塞进 `public`，那就是配置错误，不是 `useNuxtApp` 的锅。人们担心的"暴露敏感配置"本质是 `runtimeConfig` 使用不当。
-- **路由表被完整暴露**：`$router` 会包含所有已注册路由，包括登录后才能访问的路径。这不是问题——**路由是否可访问应由后端鉴权决定**，不能靠"不让用户知道路径存在"。
+- **路由表被完整暴露**：`$router` 会包含所有已注册路由，包括登录后才能访问的路径。这不是问题，**路由是否可访问应由后端鉴权决定**，不能靠"不让用户知道路径存在"。
 - **想改名字并不能提升安全性**：Nuxt 2 时代通过 `globalName` 改 `$nuxt` 名字的做法，只是提高了发现成本，不是真正的防御。
 - **前端框架本身不是漏洞源**：真正的攻击面在 API、鉴权、CSRF、XSS 等层面。把精力放在后端校验、CSP、依赖审计上，比纠结要不要藏起 `useNuxtApp` 有价值得多。
 

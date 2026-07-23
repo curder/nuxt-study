@@ -63,7 +63,7 @@ function toggle() {
 
 ```vue
 <script setup lang="ts">
-// —— 消息相关 ——
+// 消息相关
 const message = ref('')
 const messages = ref<string[]>([])
 const messageCount = computed(() => messages.value.length)
@@ -74,7 +74,7 @@ function addMessage() {
   message.value = ''
 }
 
-// —— 开关相关 ——
+// 开关相关
 const isOpen = ref(false)
 function toggle() {
   isOpen.value = !isOpen.value
@@ -174,7 +174,7 @@ const { isOpen, toggle } = useToggleState()
 
 ## 常见案例：组织 Composition API 代码的可执行步骤 {#organize-composition-api-code-steps}
 
-1. 停止「按选项类型分组」——不要再把所有 `ref` / `computed` / 函数各自扎堆。
+1. 停止「按选项类型分组」不要再把所有 `ref` / `computed` / 函数各自扎堆。
 2. 先按**逻辑关注点**重排代码，让同一功能的状态、计算、方法聚在一起。
 3. 用注释或空行为每个功能块划分清晰边界。
 4. 对职责独立、可能复用的逻辑，抽取为外部 composable（如 `useMessages`）。

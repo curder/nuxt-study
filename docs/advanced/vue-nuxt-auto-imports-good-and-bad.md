@@ -1,6 +1,6 @@
 # Vue 与 Nuxt 中的自动导入 {#vue-nuxt-auto-imports-good-and-bad}
 
-在 Vue 生态（尤其是 Nuxt）的开发中， **自动导入（Auto Imports）** 是一个颇具争议的话题——有人爱它，有人恨它。
+在 Vue 生态（尤其是 Nuxt）的开发中， **自动导入（Auto Imports）** 是一个颇具争议的话题，有人爱它，有人恨它。
 
 争议的核心在于：它能让代码更简洁，但也会带来隐式行为和可维护性方面的隐患。
 
@@ -27,7 +27,7 @@
 
 第二类则针对 composables、utils、shared 等目录下的实际函数导出。
 
-第三类是第三方包或 Nuxt 模块自行定义的自动导入——例如 Nuxt 默认会把 Vue 包本身的导出（如 `ref`）自动注入，使用者无需手写
+第三类是第三方包或 Nuxt 模块自行定义的自动导入，例如 Nuxt 默认会把 Vue 包本身的导出（如 `ref`）自动注入，使用者无需手写
 `import { ref } from 'vue'`。
 
 ## 组件自动导入 {#showcasing-component-auto-imports}
@@ -58,7 +58,7 @@
 
 而借助自动导入，可以直接删除 `import` 行，IDE 不会报错，浏览器中也正常渲染。
 
-更关键的是，即使组件有必填 props，IDE 仍会给出类型错误提示——也就是说，类型支持并没有因为省略导入而丢失。
+更关键的是，即使组件有必填 props，IDE 仍会给出类型错误提示，也就是说，类型支持并没有因为省略导入而丢失。
 
 这一点与早期的自动导入方案不同，过去虽然能跑，但缺少完整的类型（type）支持，现在已经补齐。
 
@@ -124,7 +124,7 @@ Vue 组合式 API（Composition API）RFC 中 Evan You 重构的一个组件。
 等组件库自带的组合式函数，来源会更加模糊。对新人（或一周后的自己）而言，代码的隐式行为越多，阅读和定位成本越高。
 
 **重构时 IDE 无法联动更新。** 当重命名一个自动导入的源文件（例如 `useThisFile.ts` → `useThisOtherFile.ts`）时，使用处会报
-"cannot find useThisFile"，因为自动导入名称是基于文件名生成的。虽然 TypeScript 能给出错误，但需要手动修复——而手动导入的场景下，VS
+"cannot find useThisFile"，因为自动导入名称是基于文件名生成的。虽然 TypeScript 能给出错误，但需要手动修复，而手动导入的场景下，VS
 Code 可以自动跟踪并批量更新重命名。
 
 根本原因在于：自动导入的底层库与 VS Code 之间没有建立明确的"链接"关系，IDE
@@ -211,7 +211,7 @@ export default defineNuxtConfig({
 })
 ```
 
-之后 `MyComponentA`、`AppComponentB` 会变成"未知"标识符——由于它们可能被当作自定义元素，TypeScript
+之后 `MyComponentA`、`AppComponentB` 会变成"未知"标识符，由于它们可能被当作自定义元素，TypeScript
 不一定报错，但浏览器中不会渲染。需要手动导入才能恢复：
 
 ```vue
