@@ -90,6 +90,7 @@ export default defineConfig({
                         { text: "Nitro 缓存机制", link: "/advanced/nitro-caching-guide" },
                         { text: "Nuxt 3 中实现重定向", link: "/advanced/nuxt3-redirects-route-rules-middleware" },
                         { text: "Nuxt Scripts 加载第三方资源", link: "/advanced/loading-third-party-assets-with-nuxt-scripts" },
+                        { text: "Nuxt 4 的 `shared/` 目录", link: "/advanced/nuxt-4-shared-directory" },
                     ]
                 },
             ]
