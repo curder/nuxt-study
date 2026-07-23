@@ -32,21 +32,22 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0 # Not needed if lastUpdated is not enabled
+      # 1. 开启 Corepack（Node.js 自带，用于自动切换并运行 4.17.1 版本的 Yarn）
+      - name: Enable Corepack
+        run: corepack enable
       # - uses: pnpm/action-setup@v3 # Uncomment this block if you're using pnpm
       #   with:
       #     version: 9 # Not needed if you've set "packageManager" in package.json
       # - uses: oven-sh/setup-bun@v1 # Uncomment this if you're using Bun
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: yarn
-      - name: Enable Corepack
-        run: corepack enable
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Install dependencies
-        run: yarn install # or npm install / pnpm install / bun install
+        run: yarn install --immutable # or npm install / pnpm install / bun install
       - name: Build with VitePress
         run: yarn docs:build # or npm run docs:build / pnpm docs:build / bun run docs:build
       - name: Upload artifact
