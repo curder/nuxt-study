@@ -1,6 +1,6 @@
 # Repository模式优雅封装API {#nuxt-3-repository-pattern-custom-fetch}
 
-讲清如何在 Nuxt 3 中用 Repository 模式抽象 API 调用，并配合自定义 `$fetch` 实例统一处理 baseURL、请求头等配置——用 `$fetch` 而非组合式函数来实现，兼顾复用性与灵活性。
+讲清如何在 Nuxt 3 中用 Repository 模式抽象 API 调用，并配合自定义 `$fetch` 实例统一处理 baseURL、请求头等配置，用 `$fetch` 而非组合式函数来实现，兼顾复用性与灵活性。
 
 **Repository 模式（repository pattern）**是抽象 API 调用的一种流行做法：把「怎么请求」的细节封装起来，对外只暴露语义化的方法，比如 `repository.users.getById(1)`、`repository.posts.create(data)`。
 

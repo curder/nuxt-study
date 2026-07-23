@@ -1,10 +1,10 @@
 # 组织 Composition API 代码 {#organize-composition-api-code}
 
-Composition API（组合式 API）非常强大，但它带来一个 Options API 时代不存在的新难题：**代码该怎么组织？** Options API 有一套天然的结构约束 —— `data`、`computed`、`methods`、`watch` 各就各位，你几乎不用思考「放哪里」。
+Composition API（组合式 API）非常强大，但它带来一个 Options API 时代不存在的新难题：**代码该怎么组织？** Options API 有一套天然的结构约束 `data`、`computed`、`methods`、`watch` 各就各位，你几乎不用思考「放哪里」。
 
 而 Composition API 把这份自由完全交给了开发者，反而容易产生**选择疲劳（choice fatigue）**和结构混乱。
 
-很多从 Options API 转过来的人会下意识地把 `<script setup>` 里的代码「按选项类型」堆放——所有 `ref` 放一起、所有 `computed` 放一起、所有函数放一起。
+很多从 Options API 转过来的人会下意识地把 `<script setup>` 里的代码「按选项类型」堆放，所有 `ref` 放一起、所有 `computed` 放一起、所有函数放一起。
 
 这恰恰是最常见、也最容易埋雷的错误。
 
@@ -130,13 +130,13 @@ const [isOpen, toggle] = useToggle(false)
 
 > 抽 composable 的判断标准通常是「这段逻辑是否有清晰的职责边界」和「是否可能被复用或独立测试」。
 > 
-> 并非所有逻辑都值得抽——过度拆分同样会增加跳转成本。
+> 并非所有逻辑都值得抽，过度拆分同样会增加跳转成本。
 
 ## 内联 composable（in-line composable）{#organize-composition-api-code-inline-composable}
 
 抽 composable 有时会有个副作用：为了一小段只在当前组件用一次的逻辑，专门新建一个文件，反而增加了跳转成本。
 
-下面介绍了一个来自 Evan You 的模式——**内联 composable**，即把 composable 直接**定义在同一个组件文件内**，而不抽到外部文件。
+下面介绍了一个来自 Evan You 的模式，**内联 composable**，即把 composable 直接**定义在同一个组件文件内**，而不抽到外部文件。
 
 ```vue
 <script setup lang="ts">

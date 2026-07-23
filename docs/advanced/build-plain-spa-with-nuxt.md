@@ -2,7 +2,7 @@
 
 一提到 Nuxt，很多人第一反应就是"服务端渲染（Server-Side Rendering，SSR）框架"。
 
-但事实上，Nuxt 完全可以用来构建传统的单页应用（Single Page Application，SPA）——一个不需要服务器、所有逻辑都跑在一份 HTML 文件里的纯客户端应用，和用原生 Vue（Bare Vue）写出来的效果一样。
+但事实上，Nuxt 完全可以用来构建传统的单页应用（Single Page Application，SPA），一个不需要服务器、所有逻辑都跑在一份 HTML 文件里的纯客户端应用，和用原生 Vue（Bare Vue）写出来的效果一样。
 
 问题是：默认配置下跑 `nuxt generate`，Nuxt 会把所有路由都预渲染（prerender）成静态 HTML，这并不是真正的 SPA。
 
@@ -10,7 +10,7 @@
 
 ## 默认 generate 的问题 {#default-generate-issue}
 
-先看一个最小 Demo：几个预生成页面——`index` 首页、`about` 关于页、以及一个动态页 `users/[name]`，页面之间用 `<NuxtLink>` 互相跳转。
+先看一个最小 Demo：几个预生成页面，`index` 首页、`about` 关于页、以及一个动态页 `users/[name]`，页面之间用 `<NuxtLink>` 互相跳转。
 
 `nuxt.config` 也很简单，只设置了黑底白字。
 
@@ -22,7 +22,7 @@ pnpm generate
 
 结果 Nuxt 预渲染了 **10 条路由**，输出里有 `payload.json`（带 build hash）、`users`、`about`、`users/test` 等一堆静态文件。
 
-查看 `output/public/about/index.html`，里面实实在在写着 "about page" 的内容——这显然不是 SPA，而是一堆预渲染好的静态页。
+查看 `output/public/about/index.html`，里面实实在在写着 "about page" 的内容，这显然不是 SPA，而是一堆预渲染好的静态页。
 
 ## 1. 关闭 SSR {#disable-ssr}
 
@@ -89,7 +89,7 @@ export default defineNuxtConfig({
 npx serve output/public
 ```
 
-打开 `localhost:3000`，检查 `index.html` 的负载信息可以确认：`server rendered` 为 `false`、`data ISR` 为 `false`——说明内容并非服务端渲染，一切符合 SPA 预期。
+打开 `localhost:3000`，检查 `index.html` 的负载信息可以确认：`server rendered` 为 `false`、`data ISR` 为 `false`，说明内容并非服务端渲染，一切符合 SPA 预期。
 
 刷新页面会看到短暂闪烁（flickering），因为 HTML 里本就没有预渲染内容。
 
@@ -150,7 +150,7 @@ export default defineNuxtConfig({
 
 既然纯 Vue 也能做 SPA，为什么还要用 Nuxt？核心理由是**"演进空间"与"开箱即用的实现"**：
 
-- **项目会长大**：一开始可能只是小型 SPA，但一旦需求变成"某些页面要 SSR"或"要几张预渲染的营销页"，纯 Vue 就得自己搭 SSR 或整体迁移到 Nuxt——前者坑很多，而这些坑 Nuxt 团队已经替你踩平。用 Nuxt 起步，后续通过路由规则（route rules）就能对不同页面选择 SSR、SSG、SPA 等模式。
+- **项目会长大**：一开始可能只是小型 SPA，但一旦需求变成"某些页面要 SSR"或"要几张预渲染的营销页"，纯 Vue 就得自己搭 SSR 或整体迁移到 Nuxt，前者坑很多，而这些坑 Nuxt 团队已经替你踩平。用 Nuxt 起步，后续通过路由规则（route rules）就能对不同页面选择 SSR、SSG、SPA 等模式。
 - **内置能力**：文件系统路由（file-system based routing）、自动导入（auto imports）等，在纯 Vue 里得靠 `unplugin-vue-router`、`unplugin-auto-import` 等自己拼装并自行维护；Nuxt 把这些做成了内置体验。
 - **拥有实现 vs. 拥有便利**：自己搭固然能完全掌控依赖和实现，出问题也得自己扛；想要"全套内置体验"，Nuxt 更省心，还能用上其模块生态。
 - **随时加后端**：需要 API 路由时，Nitro 已经在那里等着，能平滑补上后端能力。
@@ -163,8 +163,8 @@ export default defineNuxtConfig({
 
 - **`ssr: false` ≠ 静态生成的正确姿势**：反复强调，想要带 SEO 的构建时渲染，应该用 `ssr: true`（默认值），别被错误教程误导。`ssr: false` 只用于纯 SPA。
 - **那条预渲染警告是预期的**：设 `ssr: false` 后出现 "HTML content not prerendered" 属正常，不是错误。
-- **动态页消失是设计使然**：因为无 SSR 的 HTML 里没有链接，爬虫抓不到动态路由，所以不会生成——这正是 SPA 想要的行为。
+- **动态页消失是设计使然**：因为无 SSR 的 HTML 里没有链接，爬虫抓不到动态路由，所以不会生成，这正是 SPA 想要的行为。
 - **静态页仍会生成**：仅设 `ssr: false` 时，静态页照旧预渲染；页面很多时构建会变慢，用 `prerender:routes` + `routes.clear()` 才能压到单文件。
 - **部署要处理路由回退**：非 hash 模式下，务必让服务器把所有路径回退到 `index.html`，否则刷新子路由会 404。用 hash 模式则天然规避这个问题。
-- **补充经验——SPA 的 SEO 短板**：纯客户端渲染对搜索引擎和社交分享预览不友好，因此它最适合登录后台、内部工具这类无需 SEO 的场景；若个别页面需要 SEO，考虑用路由规则做混合渲染，而非全站 SPA。
-- **补充经验——首屏闪烁可优化**：SPA 首次加载会有空白/闪烁，建议自定义 SPA loading template 提供加载态，改善首屏体验。
+- **补充经验，SPA 的 SEO 短板**：纯客户端渲染对搜索引擎和社交分享预览不友好，因此它最适合登录后台、内部工具这类无需 SEO 的场景；若个别页面需要 SEO，考虑用路由规则做混合渲染，而非全站 SPA。
+- **补充经验，首屏闪烁可优化**：SPA 首次加载会有空白/闪烁，建议自定义 SPA loading template 提供加载态，改善首屏体验。

@@ -1,6 +1,6 @@
 # Nuxt 4 全新目录结构 {#nuxt-4-new-folder-structure}
 
-Nuxt 4 正在逐渐成型，它带来的改动远没有当年 Nuxt 2 升级到 Nuxt 3 那么剧烈——只有少量破坏性变更（breaking changes），并且可以提前通过兼容性标志（compatibility flag）主动开启。
+Nuxt 4 正在逐渐成型，它带来的改动远没有当年 Nuxt 2 升级到 Nuxt 3 那么剧烈，只有少量破坏性变更（breaking changes），并且可以提前通过兼容性标志（compatibility flag）主动开启。
 
 其中最值得关注、影响面标记为「significant」的一项，就是**全新的目录结构（directory structure）**。
 
@@ -46,7 +46,7 @@ export default defineNuxtConfig({
 })
 ```
 
-开启后会发现——**没有任何报错**。
+开启后会发现，**没有任何报错**。
 
 这是刻意设计的：Nuxt 保证你可以保留旧项目而无需强制迁移。
 
@@ -72,7 +72,7 @@ app/
 └── middleware/
 ```
 
-`app/app.vue` 这种写法初看有点怪，官方在 RFC（由 Sebastian 于当年 3 月发起）里讨论过 `ui`、`web`、`frontend`、`client` 甚至 `nuxt + nitro` 等命名，但都不够贴切——因为这里不仅仅是前端部分。最终定名为 `app`。
+`app/app.vue` 这种写法初看有点怪，官方在 RFC（由 Sebastian 于当年 3 月发起）里讨论过 `ui`、`web`、`frontend`、`client` 甚至 `nuxt + nitro` 等命名，但都不够贴切，因为这里不仅仅是前端部分。最终定名为 `app`。
 
 ### 自定义源码目录名 {#custom-srcdir}
 
@@ -103,7 +103,7 @@ export default defineNuxtConfig({
 把前端与服务端拆成两个平级目录的好处：
 
 - 类型与全局可用内容互相隔离，避免从 server 误引前端专用的东西；
-- 更容易给出正确引导——比如提醒你**不要在服务端使用 Vue 的 composables（组合式函数）**；
+- 更容易给出正确引导，比如提醒你**不要在服务端使用 Vue 的 composables（组合式函数）**；
 - 性能层面：只监听 `app/` 而不是整个根目录，避免连带监听 `.git` 与 `node_modules`，显著改善 Windows 上的 Dev 体验（file watch 仅在 Dev 阶段生效，不影响生产构建）。
 
 ### 保留在根目录的顶层文件夹 {#top-level-directories}
@@ -132,7 +132,7 @@ project-root/
 
 ## `layers/` 目录 {#layers-directory}
 
-**Nuxt Layers（层）** 允许把应用拆成一个个「迷你应用」，或反过来在基础应用之上叠加构建——常用于白标（white label）、多套设计主题，以及领域驱动设计（DDD, Domain-Driven Design）。
+**Nuxt Layers（层）** 允许把应用拆成一个个「迷你应用」，或反过来在基础应用之上叠加构建，常用于白标（white label）、多套设计主题，以及领域驱动设计（DDD, Domain-Driven Design）。
 
 Nuxt 4 下可直接用一个顶层 `layers/` 文件夹作为起点，甚至无需在 `nuxt.config.ts` 里登记。
 
@@ -192,7 +192,7 @@ export default defineNuxtConfig({
 
 ### 注意事项
 
-如果你没有使用自动导入（Auto Imports），而是靠 `~` 或 `@` 别名手动引入，那么这次要特别注意——**单双别名指向发生了变化**：
+如果你没有使用自动导入（Auto Imports），而是靠 `~` 或 `@` 别名手动引入，那么这次要特别注意，**单双别名指向发生了变化**：
 
 | 别名             | 旧结构指向 | 新结构指向       |
 |----------------|-------|-------------|
@@ -206,7 +206,7 @@ export default defineNuxtConfig({
 import type { MyType } from '~~/types'
 ```
 
-好消息是你**不可能漏掉**这个问题——IDE、type check 或构建时都会直接报错提示找不到文件。
+好消息是你**不可能漏掉**这个问题，IDE、type check 或构建时都会直接报错提示找不到文件。
 
 ## 迁移步骤 {#common-migration-steps}
 

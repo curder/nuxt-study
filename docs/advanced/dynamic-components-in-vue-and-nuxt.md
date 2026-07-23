@@ -1,6 +1,6 @@
 # Vue 与 Nuxt 中的动态组件 {#dynamic-components-in-vue-and-nuxt}
 
-在稍具规模的应用里，"按需切换组件"是一个反复出现的需求：用户切换标签页（tab）、全局状态变化时展示不同的仪表盘区块、根据业务逻辑渲染不同弹窗，或者最典型的——内容管理系统（CMS）返回一个组件名，前端需要动态渲染对应组件。
+在稍具规模的应用里，"按需切换组件"是一个反复出现的需求：用户切换标签页（tab）、全局状态变化时展示不同的仪表盘区块、根据业务逻辑渲染不同弹窗，或者最典型的内容管理系统（CMS）返回一个组件名，前端需要动态渲染对应组件。
 
 问题在于，实现方式不止一种，而每一种在**可读性、类型友好度、以及打包性能（chunk 拆分）**上的表现差别很大。
 
@@ -55,7 +55,7 @@ const isSwitched = ref(false)
 
 勾选复选框时渲染 `AnotherDynamicComponent`，否则渲染 `DynamicComponent`。Nuxt 的组件自动导入让这一步几乎零配置。
 
-局限也很明显：如果组件类型来自 API/CMS，或者数量多到无法一一列举，`v-if` 就不再适用了——你没法为一百个可能的组件写一百个分支，而且它们全都会被静态导入。
+局限也很明显：如果组件类型来自 API/CMS，或者数量多到无法一一列举，`v-if` 就不再适用了，你没法为一百个可能的组件写一百个分支，而且它们全都会被静态导入。
 
 ## 二、`<component :is>` 与三种导入 {#dynamic-component-is}
 
@@ -140,7 +140,7 @@ const componentToRender = computed(() =>
 
 这样每个组件会拿到**自己独立的 chunk**，按需加载。
 
-打开 DevTools 按组件名过滤，可以看到切换时才加载对应的 chunk——`DynamicComponent` 是独立 chunk，勾选后才拉取 `AnotherDynamicComponent`。
+打开 DevTools 按组件名过滤，可以看到切换时才加载对应的 chunk，`DynamicComponent` 是独立 chunk，勾选后才拉取 `AnotherDynamicComponent`。
 
 `Lazy` 前缀背后其实就是 Vue 的 `defineAsyncComponent`，Nuxt 帮你自动包装了。
 
@@ -186,7 +186,7 @@ nuxtApp.vueApp.component(name, component)
 // 同时注册其 Lazy 版本
 ```
 
-也就是说，Nuxt 底层做的事和在 Vue 应用里手动注册全局组件**完全一样**——只是把 `.global` 后缀或 `global/` 目录这层约定抽象掉了。
+也就是说，Nuxt 底层做的事和在 Vue 应用里手动注册全局组件**完全一样**，只是把 `.global` 后缀或 `global/` 目录这层约定抽象掉了。
 
 也可以自定义全局目录名、组件命名等，灵活度很高。
 

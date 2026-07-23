@@ -2,7 +2,7 @@
 
 `shallowRef` 只对「整体替换」触发响应，牺牲深层响应换取性能，适合信号（Signals）实现与大体量 API 数据的存储场景。
 
-在 Vue 3 组合式 API（Composition API）里，`ref` 与 `reactive` 是最常见的两个响应式原语。它们的共同特点是「深层响应」——对象内部任意层级的属性发生变化，都会触发依赖更新。
+在 Vue 3 组合式 API（Composition API）里，`ref` 与 `reactive` 是最常见的两个响应式原语。它们的共同特点是「深层响应」，对象内部任意层级的属性发生变化，都会触发依赖更新。
 
 深层响应用起来很省心，但代价是：Vue 需要为对象的每一层建立 Proxy 拦截。
 
@@ -156,12 +156,12 @@ export default defineNuxtConfig({
 
 **能换引用就换引用，换不了再 `triggerRef`。**
 
-| 触发方式              | 适用场景                  | 是否需要新引用  | 是否忽略新旧值相等  |
-|-------------------|-----------------------|----------|------------|
-| 替换 `.value`       | 绝大多数常规更新              | ✅ 必须是新引用 | ❌ 引用不变则不触发 |
-| `triggerRef(ref)` | 就地修改后强制通知 / 新旧值相等仍需通知 | ❌ 不需要    | ✅ 无条件触发    |
+| 触发方式          | 适用场景                                | 是否需要新引用  | 是否忽略新旧值相等  |
+|-------------------|-----------------------------------------|-----------------|---------------------|
+| 替换 `.value`     | 绝大多数常规更新                        | ✅ 必须是新引用 | ❌ 引用不变则不触发 |
+| `triggerRef(ref)` | 就地修改后强制通知 / 新旧值相等仍需通知 | ❌ 不需要       | ✅ 无条件触发       |
 
-### 案例一：计数器——展开后替换 {#counter-with-spread}
+### 案例一：计数器展开后替换 {#counter-with-spread}
 
 ```js
 import { shallowRef } from 'vue'
@@ -185,7 +185,7 @@ function incrementByTrigger() {
 
 前者是「数据驱动」的思路，后者更像是「事件驱动」的补丁——日常代码优先选前者，可读性和可预测性都更好。
 
-### 案例二：列表增删——用新数组代替 `push` {#list-add-remove-with-new-array}
+### 案例二：列表增删，用新数组代替 `push` {#list-add-remove-with-new-array}
 
 ```js
 const list = shallowRef([{ id: 1, name: 'A' }])
@@ -202,7 +202,7 @@ list.value = list.value.filter(item => item.id !== 1)
 
 这也是把 `shallowRef` 与 immutable 风格结合得最自然的场景：所有变更都产生新引用，正好命中浅层响应的触发条件。
 
-### 案例三：接口数据——请求完成后整体替换 {#api-data-replace-on-fetch}
+### 案例三：接口数据，请求完成后整体替换 {#api-data-replace-on-fetch}
 
 ```js
 const data = shallowRef(null)
@@ -216,7 +216,7 @@ async function refresh() {
 
 因为响应体从来不会被就地修改，只会在下一次请求时整体替换，`shallowRef` 与「替换触发」几乎是一对天生的搭档。
 
-### 案例四：Signals setter——替换式赋值 {#signals-setter-replace}
+### 案例四：Signals setter，替换式赋值 {#signals-setter-replace}
 
 ```js
 const set = (v) => {
@@ -255,4 +255,4 @@ const set = (v) => {
 - **Nuxt 的 `deep` 选项默认值**：目前默认仍是 `true`，主动改为 `false` 才能享受浅层响应；若项目里有代码依赖对 `data` 内部字段的直接修改，需要在启用前审查一遍。
 - **Signals 模板写法**：getter 是函数，模板中必须写成 `count()` 而非 `count`，容易忘。
 - **`triggerRef` 别乱撒**：只在「值相等但仍需通知」或「无法产生新引用」的场景使用，正常替换 `.value` 已足够触发依赖；散落各处的手动触发会让响应链路难以追踪。
-- **配套 API**：`shallowReactive` 与 `shallowReadonly` 语义一致——只对第一层做响应式处理，深层保持原样，遇到大型嵌套结构（如三方库实例、图/树数据）时同样值得考虑。
+- **配套 API**：`shallowReactive` 与 `shallowReadonly` 语义一致，只对第一层做响应式处理，深层保持原样，遇到大型嵌套结构（如三方库实例、图/树数据）时同样值得考虑。

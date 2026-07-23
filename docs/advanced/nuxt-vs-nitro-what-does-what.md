@@ -4,7 +4,7 @@
 
 Nuxt 建立在一大堆独立包之上，这种设计的好处是每个包都能被单独隔离、复用（甚至用在其他框架里）、独立测试。
 
-其中最关键的一块就是 **Nitro**——Nuxt 的服务器引擎（server engine）。
+其中最关键的一块就是 **Nitro**，Nuxt 的服务器引擎（server engine）。
 
 问题在于：一旦涉及 Nuxt 的「服务端」部分，很多开发者就分不清边界了。典型的困惑包括：
 
@@ -29,7 +29,7 @@ Nuxt 官方文档的 [server 章节](https://nuxt.com/docs/getting-started/serve
 Nuxt  →  Nitro  →  h3
 ```
 
-Nitro 底层用的是 **h3**——一个更低层的包，提供了大量在 Nitro 上下文中会用到的工具函数（utilities）。
+Nitro 底层用的是 **h3**，一个更低层的包，提供了大量在 Nitro 上下文中会用到的工具函数（utilities）。
 
 ## 为什么 server 目录里用不了 Vue composables {#why-cant-use-vue-composables-in-server}
 
@@ -42,7 +42,7 @@ Nitro 底层用的是 **h3**——一个更低层的包，提供了大量在 Nit
 既然没有 Vue 应用实例，Pinia、Vue 组合式函数这类依赖 Vue 运行时上下文的东西自然无从谈起。
 
 ```ts
-// server/api/hello.ts —— 这里只有 Nitro，没有 Nuxt / Vue
+// server/api/hello.ts 这里只有 Nitro，没有 Nuxt / Vue
 export default defineEventHandler((event) => {
   // ✅ 可以用 Nitro / h3 的工具，比如读取请求
   // ❌ 不能用 usePinia() / 任何 Vue composable
@@ -55,7 +55,7 @@ export default defineEventHandler((event) => {
 `runtimeConfig` 分为**公有（public）**和**私有（private）**两部分，正好演示了这条边界。
 
 - **public** 部分：客户端也能拿到（`runtimeConfig.public`）。
-- **private** 部分：只保留给安全上下文（secure context），即服务端——也就是 Nitro 那一侧，用来放密钥等敏感信息。
+- **private** 部分：只保留给安全上下文（secure context），即服务端，也就是 Nitro 那一侧，用来放密钥等敏感信息。
 
 那么中间交汇区（SSR）会发生什么？**因为 SSR 跑在 Nitro 上下文里，此时服务端同时能访问 public 和 private 两部分**。
 
@@ -78,13 +78,13 @@ const config = useRuntimeConfig()
 
 如今可以用 **server components**（服务端组件）把数据库代码（比如查询 MongoDB、SQL）放进去，而不必塞进普通 Nuxt 组件里。
 
-但即便是 server components，它们也是**通过 Nitro 路由被服务端渲染**的——所以本质上仍然是「两者协作」的又一个体现。
+但即便是 server components，它们也是**通过 Nitro 路由被服务端渲染**的，所以本质上仍然是「两者协作」的又一个体现。
 
 > 如果用了 SSR，可以写出同时在服务端和客户端执行的代码；但 **server 目录里的一切都是严格 server-only 的，那里还没有 Vue、没有 Nuxt**。
 
 ## useRequestEvent：只在服务端有值 {#use-request-event-only-on-server}
 
-一个实用的组合式函数 **`useRequestEvent`**，用于在 Nuxt 应用中拿到请求事件——**但仅在服务端渲染时有效**。
+一个实用的组合式函数 **`useRequestEvent`**，用于在 Nuxt 应用中拿到请求事件，**但仅在服务端渲染时有效**。
 
 ```ts
 const event = useRequestEvent()
@@ -101,7 +101,7 @@ const event = useRequestEvent()
 
 判断一段代码归 Nitro 还是 Nuxt，只需要问自己一个核心问题：**这段代码在什么时机、什么上下文里执行？** 下面把每种典型场景拆开讲清楚判断依据、正确写法和踩坑点。
 
-### 1. 写在 `server/` 目录里的代码 —— 纯 Nitro 领地 {#server-code-is-nitro-only}
+### 1. 写在 `server/` 目录里的代码是纯 Nitro 领地 {#server-code-is-nitro-only}
 
 只要文件位于 `server/`（如 `server/api/`、`server/routes/`、`server/middleware/`），它就**只在 Nitro 里运行**，此刻根本没有 Nuxt/Vue 实例。
 
@@ -125,7 +125,7 @@ export default defineEventHandler((event) => {
 
 **判断口诀**：路径在 `server/` 下 → 一律当作后端代码写，别想着复用前端 store 或 composable。
 
-### 2. 需要密钥 / 敏感配置 —— 交给 Nitro 侧 {#sensitive-config-to-nitro}
+### 2. 需要密钥 / 敏感配置交给 Nitro 侧 {#sensitive-config-to-nitro}
 
 `runtimeConfig` 的**私有部分**只应在安全上下文（secure context）读取，也就是服务端。
 
@@ -142,15 +142,15 @@ export default defineNuxtConfig({
 ```
 
 ```ts
-// server/api/pay.post.ts —— 密钥只在这里出现
+// server/api/pay.post.ts 密钥只在这里出现
 const { apiSecret } = useRuntimeConfig(event)
 ```
 
 **判断口诀**：凡是「泄露了就出事」的值（数据库连接串、第三方密钥）→ 放 `runtimeConfig` 顶层（private），并且只在 `server/` 或 SSR 上下文里读。
 
-### 3. 要用组合式函数 —— 放进组件，靠 SSR + 客户端跑 {#use-composable-in-component}
+### 3. 要用组合式函数放进组件，靠 SSR + 客户端跑 {#use-composable-in-component}
 
-**server 目录里用不了 composable，但被服务端渲染的组件里可以用**。因为组件在 SSR 期间由 Nitro 执行，随后又在客户端 hydration 时再跑一次——这正是「中间交汇区」。
+**server 目录里用不了 composable，但被服务端渲染的组件里可以用**。因为组件在 SSR 期间由 Nitro 执行，随后又在客户端 hydration 时再跑一次，这正是「中间交汇区」。
 
 ```vue
 <script setup>

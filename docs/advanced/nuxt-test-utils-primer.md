@@ -29,7 +29,7 @@ export default defineVitestConfig({
 })
 ```
 
-把 `environment` 设为 `'nuxt'` 是关键——只有这样，测试里才能像在真实应用中一样使用 Nuxt 的自动导入和内置 composables。
+把 `environment` 设为 `'nuxt'` 是关键，只有这样，测试里才能像在真实应用中一样使用 Nuxt 的自动导入和内置 composables。
 
 ## 二、为组件写单元测试 {#unit-test-for-components}
 
@@ -131,7 +131,7 @@ describe('Browser E2E', async () => {
 
 ## 六、按文件设置测试环境 {#per-file-test-environment}
 
-并非所有测试都需要完整的 Nuxt 环境——纯函数测试跑在 Nuxt 环境里反而更慢。
+并非所有测试都需要完整的 Nuxt 环境，纯函数测试跑在 Nuxt 环境里反而更慢。
 
 通过文件顶部的注释指令声明可以**按文件覆盖测试环境**：
 
@@ -155,7 +155,7 @@ describe('Browser E2E', async () => {
 | **按文件选环境**                  | Nuxt 环境更重，简单纯函数测试用默认环境更快。                                |
 | **单元 vs E2E 取舍**            | 单元测试快而聚焦，E2E 贴近真实但成本高，按金字塔比例分配。                          |
 
-建议遵循「测试金字塔」——大量快速的单元测试打底，少量关键路径的 E2E 测试兜住核心流程，避免全靠 E2E 导致 CI 缓慢且脆弱。
+建议遵循「测试金字塔」，大量快速的单元测试打底，少量关键路径的 E2E 测试兜住核心流程，避免全靠 E2E 导致 CI 缓慢且脆弱。
 
 此外，涉及网络请求的组件测试应把 `$fetch`/API 层也一并 mock，保证测试的确定性（deterministic），不因外部服务波动而随机失败。
 

@@ -6,7 +6,7 @@ Nuxt 在服务端渲染（SSR）或静态生成（SSG）时，会把页面用到
 
 这份数据的作用是让客户端「水合（Hydration）」时不需要重新请求接口就能复用服务端拿到的数据。
 
-问题在于：如果接口返回了几十上百个字段，而页面只用其中的三四个，那些用不到的字段依然会原样进入 `__NUXT__`——直接体现为 HTML 文档体积膨胀、首屏字节数飙升、TTFB 与解析成本变差。这在对接大而全的第三方 API（如 Destiny 2、CMS 全字段接口）时尤其严重。
+问题在于：如果接口返回了几十上百个字段，而页面只用其中的三四个，那些用不到的字段依然会原样进入 `__NUXT__`，直接体现为 HTML 文档体积膨胀、首屏字节数飙升、TTFB 与解析成本变差。这在对接大而全的第三方 API（如 Destiny 2、CMS 全字段接口）时尤其严重。
 
 ## `__NUXT__` 到底是什么 {#what-is-nuxt-payload}
 
@@ -34,7 +34,7 @@ export default defineEventHandler(async () => {
 })
 ```
 
-如果后端使用 GraphQL，这个问题几乎自动消失——按需选择字段本身就是 GraphQL 的设计目标。
+如果后端使用 GraphQL，这个问题几乎自动消失，按需选择字段本身就是 GraphQL 的设计目标。
 
 ### 策略二：BFF（Backend For Frontend）代理层 {#bff-proxy-layer}
 
@@ -52,7 +52,7 @@ export default defineEventHandler(async () => {
 
 ### 策略三：`useFetch` 的 `transform` 选项（最轻的方案）{#transform-option-of-usefetch}
 
-无法改动 API、也不想为每个调用都新建 Nitro 端点时，直接在 `useFetch` / `useAsyncData` 的 `transform` 里裁剪——**`transform` 的返回值才是最终写入 payload 的内容**。
+无法改动 API、也不想为每个调用都新建 Nitro 端点时，直接在 `useFetch` / `useAsyncData` 的 `transform` 里裁剪，**`transform` 的返回值才是最终写入 payload 的内容**。
 
 ```vue
 <script setup>
@@ -72,7 +72,7 @@ const { data } = await useFetch('/api/item', {
 </template>
 ```
 
-需要注意的是，`transform` 之后 `data` 的类型也会随返回值变化——原来的 `data.item.name` 需要改成 `data.name`，TypeScript 会立刻给出提示。
+需要注意的是，`transform` 之后 `data` 的类型也会随返回值变化，原来的 `data.item.name` 需要改成 `data.name`，TypeScript 会立刻给出提示。
 
 ### 加分项：Nuxt Content 的字段裁剪 {#nuxt-content-field-filtering}
 
@@ -104,7 +104,7 @@ const { data } = await useAsyncData('post', () =>
 ## 常见坑与注意事项
 
 - **`transform` 会改变 `data` 类型**：模板、`computed`、下游 composable 中所有引用路径都要跟着改，TypeScript 报错是好事，别忽略。
-- **只影响 payload，不影响接口响应**：`transform` 发生在前端框架层，接口本身仍然会传完整数据，网络体积不会因此减少——想同时减小网络请求，只能走策略一或策略二。
+- **只影响 payload，不影响接口响应**：`transform` 发生在前端框架层，接口本身仍然会传完整数据，网络体积不会因此减少，想同时减小网络请求，只能走策略一或策略二。
 - **key 是自动生成的哈希**：`window.__NUXT__` 里的键看起来随机，是 Nuxt 根据调用位置生成的，不必手动维护；必要时可以用 `useFetch` 的 `key` 选项自定义。
 - **SSG + payload extraction**：静态生成模式下，payload 会被抽成独立的 `payload.json`，路由切换按需加载，此时策略三收益最明显。
 - **`useAsyncData` 同理**：`transform` 不是 `useFetch` 独有的选项，`useAsyncData` 也支持，同样的思路可以套用到任意异步数据源。

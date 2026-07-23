@@ -2,7 +2,7 @@
 
 Nitro 作为 Nuxt 的服务端引擎，也用于 Analog、SolidStart 等框架。
 
-它的核心能力之一就是缓存——让昂贵的计算或 API 调用结果被复用，避免每次请求都重复执行。
+它的核心能力之一就是缓存，让昂贵的计算或 API 调用结果被复用，避免每次请求都重复执行。
 
 但缓存配置往往面临几个痛点：
 
@@ -32,7 +32,7 @@ export default defineConfig({
 
 **maxAge 行为**：首次请求执行 handler 返回结果并缓存；10 秒内再次请求直接返回缓存；10 秒后缓存失效，下一次请求重新执行 handler。如果 handler 内有耗时操作（如 `await new Promise(resolve => setTimeout(resolve, 3000))`），缓存过期后的那个用户就要等待 3 秒。
 
-**SWR 行为**：开启 `swr: true` 后，缓存过期时不再让用户等待——先返回旧数据（stale），同时在后台异步重新获取并更新缓存（revalidate）。后续用户就能拿到新数据。用户永远不会遇到等待延迟，代价是至少有一个用户会拿到稍旧的数据。
+**SWR 行为**：开启 `swr: true` 后，缓存过期时不再让用户等待，先返回旧数据（stale），同时在后台异步重新获取并更新缓存（revalidate）。后续用户就能拿到新数据。用户永远不会遇到等待延迟，代价是至少有一个用户会拿到稍旧的数据。
 
 ```ts
 routeRules: {
@@ -57,7 +57,7 @@ cache: {
 
 ## `defineCachedEventHandler`细粒度缓存控制 {#using-definecachedeventhandler-for-fine-grained-caching}
 
-路由规则的局限在于配置必须可序列化——无法写函数、无法动态决定缓存键。`defineCachedEventHandler` 解决了这个问题，它将缓存逻辑直接写在 handler 中：
+路由规则的局限在于配置必须可序列化，无法写函数、无法动态决定缓存键。`defineCachedEventHandler` 解决了这个问题，它将缓存逻辑直接写在 handler 中：
 
 ```ts {7-11}
 // server/api/test.ts
@@ -218,7 +218,7 @@ export default defineEventHandler(async (event) => {
 })
 ```
 
-调用时可以传入 `event` 参数，这在 Edge 运行时中尤其重要——因为 Edge 使用基于 fetch 的事件循环而非 Node.js 的 request/response 模型，需要通过 `event.waitUntil` 确保后台 revalidation 完成后才关闭 worker：
+调用时可以传入 `event` 参数，这在 Edge 运行时中尤其重要，因为 Edge 使用基于 fetch 的事件循环而非 Node.js 的 request/response 模型，需要通过 `event.waitUntil` 确保后台 revalidation 完成后才关闭 worker：
 
 ```ts
 export const getPosts = defineCachedFunction(

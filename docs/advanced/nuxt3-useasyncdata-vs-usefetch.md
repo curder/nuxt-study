@@ -2,7 +2,7 @@
 
 数据获取（Data Fetching）是几乎每个应用都逃不开的环节。
 
-Nuxt 3 提供了两个内置的数据获取 Composable——`useFetch` 和 `useAsyncData`——再加上底层的 `$fetch` 请求函数，很多人第一反应是：
+Nuxt 3 提供了两个内置的数据获取 Composable，`useFetch` 和 `useAsyncData`，再加上底层的 `$fetch` 请求函数，很多人第一反应是：
 **为什么要有两个？它们到底有什么区别？我该用哪个？**
 
 如果不理解它们的关系，容易踩两类坑：一是在服务端渲染（SSR）场景下重复请求，导致数据被 fetch 两次；二是查询参数（query
@@ -65,7 +65,7 @@ const {data} = await useFetch('/api/products', {
 category.value = 'boots'
 ```
 
-`useFetch` 默认会 watch 其 URL 和 options 中的响应式源，因此参数变化能自动触发刷新——这正是它「省心」的地方。
+`useFetch` 默认会 watch 其 URL 和 options 中的响应式源，因此参数变化能自动触发刷新，这正是它「省心」的地方。
 
 ## 三、拆解 useFetch：用 useAsyncData + $fetch 复刻它 {#nuxt3-useasyncdata-vs-usefetch-replicate}
 
