@@ -3,7 +3,6 @@
 [![Build](https://github.com/curder/nuxt-study/actions/workflows/deploy.yml/badge.svg)](https://github.com/curder/nuxt-study/actions?query=deploy%3Amaster)
 ![node](https://img.shields.io/badge/node-%3E%3D24.0-brightgreen)
 ![yarn](https://img.shields.io/badge/yarn-4.17.1-brightgreen)
-![license](https://img.shields.io/badge/license-MIT-brightgreen)
 
 [Nuxt.js](https://nuxt.com/) 学习笔记，使用 [VitePress](https://vitepress.dev/) 构建文档站点。
 
