@@ -139,6 +139,7 @@ node_modules/.nitro/cache/nitro/handlers/_test-cache.json
 export default defineConfig({
   storage: {
     cache: {
+      base: 'nuxt4', // 缓存前缀
       driver: 'redis',           // 或 cloudflare-kv 等
       url: 'redis://localhost:6379'
     }
@@ -159,6 +160,7 @@ export default defineCachedEventHandler(handler, {
 export default defineConfig({
   storage: {
     'cache-important': {
+      base: 'nuxt4', // 缓存前缀        
       driver: 'redis',
       url: 'redis://...'
     }
@@ -172,6 +174,7 @@ export default defineConfig({
 export default defineConfig({
   storage: {
     'cache-important': {
+      base: 'nuxt4', // 缓存前缀
       driver: 'redis',
       url: 'redis://production-redis:6379'
     }
@@ -307,8 +310,9 @@ export default defineEventHandler(async (event) => {
    export default defineConfig({
      storage: {
        cache: {
-         driver: 'redis',
-         url: process.env.REDIS_URL
+         base: 'nuxt4', // 缓存前缀
+         driver: 'redis', // 缓存驱动
+         url: process.env.REDIS_URL // 缓存连接方式
        }
      }
    })
