@@ -89,6 +89,7 @@ export default defineConfig({
                         { text: "Nuxt 与 Nitro 的兼容性日期", link: "/advanced/nuxt-nitro-compatibility-date-explained" },
                         { text: "Nitro 缓存机制", link: "/advanced/nitro-caching-guide" },
                         { text: "Nuxt 3 中实现重定向", link: "/advanced/nuxt3-redirects-route-rules-middleware" },
+                        { text: "Nuxt Scripts 加载第三方资源", link: "/advanced/loading-third-party-assets-with-nuxt-scripts" },
                     ]
                 },
             ]
