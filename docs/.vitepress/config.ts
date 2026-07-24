@@ -93,6 +93,7 @@ export default defineConfig({
                         { text: "Nuxt 4 的 `shared/` 目录", link: "/advanced/nuxt-4-shared-directory" },
                         { text: "Vue 与 Nuxt 中的自动导入", link: "/advanced/vue-nuxt-auto-imports-good-and-bad" },
                         { text: "Nitro 中组合事件处理器", link: "/advanced/composing-event-handlers-in-nitro" },
+                        { text: "Nitro 里为什么没有 composables 文件夹", link: "/advanced/no-composables-folder-in-nitro" },
                     ]
                 },
             ]
